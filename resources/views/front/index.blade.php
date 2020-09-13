@@ -27,9 +27,11 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <a href="{{ url('/product-detail', $product->id) }}"><div class="div-image" style="background-image:url('/getFrontImage?path=/public/images/pizza/&image={{ $product->image }}');"></div></a>
-                                                <h2>$ {{ $product->price }}</h2>
+                                                <a href="{{ url('/product-detail', $product->id) }}"><div class="div-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $product->image }}');"></div></a>
                                                 <p>{{ $product->name }}</p>
+                                                <p>{{ $product->description }}</p>
+                                                <h2>$ {{ $product->price }}test</h2>
+
                                                 <a href="{{ url('/product-detail',$product->id) }}" class="btn btn-default add-to-cart">View Product</a>
                                             </div>
                                         </div>

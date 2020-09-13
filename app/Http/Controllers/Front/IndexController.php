@@ -10,7 +10,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with('attributes')->get();
 
         return view('front.index', compact('products'));
     }
