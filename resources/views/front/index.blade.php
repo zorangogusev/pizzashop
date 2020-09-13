@@ -30,9 +30,22 @@
                                                 <a href="{{ url('/product-detail', $product->id) }}"><div class="div-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $product->image }}');"></div></a>
                                                 <p>{{ $product->name }}</p>
                                                 <p>{{ $product->description }}</p>
-                                                <h2>$ {{ $product->price }}test</h2>
 
-                                                <a href="{{ url('/product-detail',$product->id) }}" class="btn btn-default add-to-cart">View Product</a>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <select>
+                                                            @foreach ($product->attributes as $attribute)
+                                                                <option value="{{ $product->id }}" data-size="{{ $attribute->size }}" data-price="{{ $attribute->price }}">{{ $attribute->size }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        @foreach ($product->attributes as $attribute)
+                                                             {{ $attribute->price }}
+                                                        @endforeach
+                                                    </div>
+                                                </div>
+                                                <a href="{{ url('/product-detail',$product->id) }}" class="btn btn-default add-to-cart mt-2">Add to Card</a>
                                             </div>
                                         </div>
                                     </div>

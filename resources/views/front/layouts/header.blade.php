@@ -11,13 +11,10 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="social-icons pull-right">
+                    <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="" class="top-header-bgcolor"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="" class="top-header-bgcolor"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>
@@ -25,50 +22,6 @@
         </div>
     </div><!--/header_top-->
 
-    <div class="header-middle"><!--header-middle-->
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <div class="logo pull-left">
-                        LOGO
-                    </div>
-                    <div class="btn-group pull-right">
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                USA
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Canada</a></li>
-                                <li><a href="#">UK</a></li>
-                            </ul>
-                        </div>
-
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                DOLLAR
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Canadian Dollar</a></li>
-                                <li><a href="#">Pound</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="shop-menu pull-right">
-                        <ul class="nav navbar-nav">
-                            <li><a href=""><i class="fa fa-shopping-cart"></i> Cart</a></li>
-
-                            <li><a href=""><i class="fa fa-lock"></i> Login</a></li>
-
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div><!--/header-middle-->
 
     <div class="header-bottom"><!--header-bottom-->
         <div class="container">
@@ -97,6 +50,16 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                            DOLLAR
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Canadian Dollar</a></li>
+                            <li><a href="#">Pound</a></li>
+                        </ul>
+                    </div>
                     <div class="search_box pull-right">
                         <input type="text" placeholder="Search"/>
                     </div>
