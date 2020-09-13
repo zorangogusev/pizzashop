@@ -21,6 +21,7 @@ use App\Http\Controllers\Front\IndexController;
 
 /* Front Location */
 Route::get('/', [IndexController::class, 'index']);
+Route::get('/getFrontImage', [IndexController::class, 'getFrontImage']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

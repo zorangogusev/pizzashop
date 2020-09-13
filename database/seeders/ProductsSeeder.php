@@ -14,7 +14,7 @@ class ProductsSeeder extends Seeder
      */
     public function run()
     {
-        $pizza_products = ['20', 'apline', 'bomg', 'margarita', 'mexicana', 'mod', 'mona', 'special', 'vektors'];
+        $pizza_products = ['vegetarian', 'alpine', 'macedonian', 'margarita', 'mexicana', 'kapricoza', 'mona', 'special', 'vektors'];
         $pizza_size = ['small' => 5, 'medium' => 10, 'large' => 15];
 
         foreach ($pizza_products as $pizza) {
