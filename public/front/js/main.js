@@ -1,11 +1,3 @@
-/*price range*/
-
- $('#sl2').slider();
-
-	var RGBChange = function() {
-	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')
-	};
-
 /*scroll to top*/
 
 $(document).ready(function(){
@@ -25,97 +17,7 @@ $(document).ready(function(){
 	        scrollImg: false, // Set true to use image
 	        activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
 	        zIndex: 2147483647 // Z-Index for the overlay
+
 		});
 	});
-	///////////Size of Product
-	$("#idSize").change(function () {
-		var SizeAttr=$(this).val();
-		if(SizeAttr!=""){
-            $.ajax({
-                type:'get',
-                url:'/get-product-attr',
-                data:{size:SizeAttr},
-                success:function(resp){
-                	var arr=resp.split("#");
-                    $("#dynamic_price").html('US $'+arr[0]);
-                    $("#dynamicPriceInput").val(arr[0]);
-                    if(arr[1]==0){
-						$("#buttonAddToCart").hide();
-						$("#availableStock").text("Out Of Stock");
-                        $("#inputStock").val(0);
-					}else{
-                        $("#buttonAddToCart").show();
-                        $("#availableStock").text("In Stock");
-                        $("#inputStock").val(arr[1]);
-					}
-                },error:function () {
-                    alert("Error Select Size");
-                }
-            });
-		}
-    });
-	///////////// Thumnail Image
-	$(".changeImage").click(function () {
-		newImage=$(this).attr('src');
-		$("#dynamicImage").attr('src',newImage);
-    });
-	///// Copy Billing address to Shipping Address
-	$("#checkme").click(function () {
-		if(this.checked){
-			$("#shipping_name").val($("#billing_name").val());
-            $("#shipping_address").val($("#billing_address").val());
-            $("#shipping_city").val($("#billing_city").val());
-            $("#shipping_state").val($("#billing_state").val());
-            $("#shipping_country").val($("#billing_country").val());
-            $("#shipping_pincode").val($("#billing_pincode").val());
-            $("#shipping_mobile").val($("#billing_mobile").val());
-		}else{
-            $("#shipping_name").val("");
-            $("#shipping_address").val("");
-            $("#shipping_city").val("");
-            $("#shipping_state").val("");
-            $("#shipping_country").val("Albania");
-            $("#shipping_pincode").val("");
-            $("#shipping_mobile").val("");
-		}
-    });
 });
-
-// Instantiate EasyZoom instances
-var $easyzoom = $('.easyzoom').easyZoom();
-
-// Setup thumbnails example
-var api1 = $easyzoom.filter('.easyzoom--with-thumbnails').data('easyZoom');
-
-$('.thumbnails').on('click', 'a', function(e) {
-    var $this = $(this);
-
-    e.preventDefault();
-
-    // Use EasyZoom's `swap` method
-    api1.swap($this.data('standard'), $this.attr('href'));
-});
-
-// Setup toggles example
-var api2 = $easyzoom.filter('.easyzoom--with-toggle').data('easyZoom');
-
-$('.toggle').on('click', function() {
-    var $this = $(this);
-
-    if ($this.data("active") === true) {
-        $this.text("Switch on").data("active", false);
-        api2.teardown();
-    } else {
-        $this.text("Switch off").data("active", true);
-        api2._init();
-    }
-});
-
-// // Instantiate gmaps instances
-// $(document).ready(function(){
-//     new GMaps({
-//         div: '#map',
-//         lat: -32.043333,
-//         lng: -77.028333
-//     })
-// });

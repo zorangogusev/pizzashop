@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('front/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('front/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('front/css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('front/css/animate.css') }}">
 </head><!--/head-->
 
 <body>
@@ -19,6 +20,7 @@
 
 @include('front.layouts.footer')
 <script src="{{ asset('front/js/jquery.min.js') }}"></script>
+<script src="{{ asset('front/js/jquery.scrollUp.min.js') }}"></script>
 <script src="{{ asset('front/fontawesome/js/all.js') }}"></script>
 <script src="{{ asset('front/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('front/js/main.js') }}"></script>
