@@ -31,21 +31,28 @@
                                                 <p>{{ $product->name }}</p>
                                                 <p>{{ $product->description }}</p>
 
-                                                <div class="row">
+                                                <div class="row index-page-row-for-price">
                                                     <div class="col-sm-6">
-                                                        <select>
+                                                        <select class="form-control index-page-product-size">
                                                             @foreach ($product->attributes as $attribute)
-                                                                <option value="{{ $product->id }}" data-size="{{ $attribute->size }}" data-price="{{ $attribute->price }}">{{ $attribute->size }}</option>
+                                                                <option value="{{ $attribute->price }}"
+                                                                        data-size="{{ $attribute->size }}"
+                                                                        data-id="{{ $product->id }}">
+                                                                    {{ $attribute->size }}
+                                                                </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-sm-6 test">
+                                                        <i class="fa fa-euro-sign"></i>
+                                                        @php $count = 0 @endphp
                                                         @foreach ($product->attributes as $attribute)
-                                                             {{ $attribute->price }}
+                                                            <span class="font-size-16px @if($count == 0) index-page-active-price @endif" data-price="{{ $attribute->price }}">{{ $attribute->price }}</span>
+                                                            @php $count++ @endphp
                                                         @endforeach
                                                     </div>
                                                 </div>
-                                                <a href="{{ url('/product-detail',$product->id) }}" class="btn btn-default add-to-cart mt-2">Add to Card</a>
+                                                <a href="{{ url('/product-detail',$product->id) }}" class="btn btn-default add-to-cart margin-top-25px">Add to Card</a>
                                             </div>
                                         </div>
                                     </div>

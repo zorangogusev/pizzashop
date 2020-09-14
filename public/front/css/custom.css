@@ -1,3 +1,17 @@
 .top-header-bgcolor {
     background: rgb(240, 240, 233) !important;
 }
+.font-weight-600 {
+    font-weight: 600;
+}
+.index-page-active-price {
+    color: #FE980F !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+}
+.font-size-16px {
+    font-size: 16px;
+}
+.margin-top-25px {
+    margin-top: 25px;
+}

@@ -21,3 +21,22 @@ $(document).ready(function(){
 		});
 	});
 });
+
+$('.index-page-product-size').on('change', function () {
+    console.log('index-page-product-size is changed ');
+    var price = $(this).val();
+    var div_for_price = $(this).parent().parent().children().next();
+
+    console.log(div_for_price);
+    console.log(price);
+
+    var new_span_for_active_price = div_for_price.find(`[data-price='${price}']`);
+    var old_span_for_active_price = div_for_price.find('.index-page-active-price');
+
+    console.log(new_span_for_active_price);
+
+    $(old_span_for_active_price).removeClass('index-page-active-price');
+    $(new_span_for_active_price).addClass('index-page-active-price');
+
+});
+
