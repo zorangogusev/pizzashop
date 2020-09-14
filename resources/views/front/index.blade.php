@@ -1,20 +1,6 @@
 @extends ('front.layouts.master')
 @section ('title','Home Page')
 @section ('content')
-    <style>
-        .div-image {
-            max-width: 100%;
-            width: 200px;
-            height: 200px;
-            background-position: 50% 50%;
-            background-repeat: no-repeat;
-            background-size: cover;
-            border: 4px solid #fff;
-            outline: 1px solid #DDd;
-            margin: 15px auto 0 auto;
-        }
-    </style>
-
     <section>
         <div class="container">
             <div class="row">
@@ -37,7 +23,7 @@
                                                             @foreach ($product->attributes as $attribute)
                                                                 <option value="{{ $attribute->price }}"
                                                                         data-size="{{ $attribute->size }}"
-                                                                        data-id="{{ $product->id }}">
+                                                                        data-product-id="{{ $product->id }}">
                                                                     {{ $attribute->size }}
                                                                 </option>
                                                             @endforeach
@@ -52,7 +38,7 @@
                                                         @endforeach
                                                     </div>
                                                 </div>
-                                                <a href="{{ url('/product-detail',$product->id) }}" class="btn btn-default add-to-cart margin-top-25px">Add to Card</a>
+                                                <a href="javascript:void(0)" class="btn btn-default add-to-cart margin-top-25px">Add to Card</a>
                                             </div>
                                         </div>
                                     </div>
