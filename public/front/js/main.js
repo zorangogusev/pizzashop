@@ -47,13 +47,17 @@ $(function () {
         // console.log(div_with_data);
         var selected_option = div_with_data.find(":selected").text();
         var selected_product_id = div_with_data.find(":selected").attr('data-product-id');
-        var selected_product_size = div_with_data.find(":selected").attr('data-size');
+        var selected_product_size = div_with_data.find(":selected").attr('data-product-size');
+        var selected_product_name = div_with_data.find(":selected").attr('data-product-name');
+        var selected_product_code = div_with_data.find(":selected").attr('data-product-code');
         var selected_product_price = div_with_data.find(":selected").val();
 
         // console.log(selected_option);
         console.log(selected_product_id);
         console.log(selected_product_size);
         console.log(selected_product_price);
+        console.log(selected_product_name);
+        console.log(selected_product_code);
 
         $.ajax({
             type: "GET",
@@ -62,6 +66,8 @@ $(function () {
             data: {
                 product_id: selected_product_id,
                 product_size: selected_product_size,
+                product_name: selected_product_name,
+                product_code: selected_product_code,
                 product_price: selected_product_price
             },
             beforeSend: function() {

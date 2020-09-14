@@ -22,8 +22,10 @@
                                                         <select class="form-control index-page-product-size">
                                                             @foreach ($product->attributes as $attribute)
                                                                 <option value="{{ $attribute->price }}"
-                                                                        data-size="{{ $attribute->size }}"
-                                                                        data-product-id="{{ $product->id }}">
+                                                                        data-product-size="{{ $attribute->size }}"
+                                                                        data-product-id="{{ $product->id }}"
+                                                                        data-product-name="{{ $product->name }}"
+                                                                        data-product-code="{{ $product->code }}">
                                                                     {{ $attribute->size }}
                                                                 </option>
                                                             @endforeach
