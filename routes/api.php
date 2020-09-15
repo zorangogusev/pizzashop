@@ -15,7 +15,7 @@ use App\Http\Controllers\Api\v1\CartController;
 */
 
 Route::get('/addToCard', [CartController::class, 'addToCard']);
-Route::get('/delete', [CartController::class, 'delete']);
+Route::get('/actionFromCartPage', [CartController::class, 'actionFromCartPage']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

@@ -5,9 +5,6 @@
 @section('content')
     <section id="cart_items">
         <div class="container">
-
-            <div class="message-from-cart-action display-none"></div>
-
             <div class="table-responsive cart_info">
                 <table class="table table-condensed">
                     <thead>
@@ -35,9 +32,9 @@
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
-                                    <a class="cart_quantity_up cursor-pointer" data-cart-id="{{ $cart_data->id }}"> + </a>
+                                    <a roll="button" class="cart_quantity_up cursor-pointer" data-cart-id="{{ $cart_data->id }}"> + </a>
                                     <input class="cart_quantity_input" type="text" name="quantity" value="{{ $cart_data->quantity }}" autocomplete="off" size="2" disabled>
-                                    <a class="cart_quantity_down cursor-pointer" data-cart-id="{{ $cart_data->id }}"> - </a>
+                                    <a roll="button" class="cart_quantity_down cursor-pointer" data-cart-id="{{ $cart_data->id }}"> - </a>
                                 </div>
                             </td>
                             <td class="cart_total">
@@ -57,14 +54,17 @@
     <section id="do_action">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6">
-                </div>
+                <div class="col-sm-6"></div>
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
                             <li>Total <span>$ {{ $total_price }}</span></li>
                         </ul>
-                        <div class="margin-left-20px"><a class="btn btn-default check_out" href="">Check Out</a></div>
+                        <div class="margin-left-20px">
+                            <button class="btn btn-default check_out" @if ($total_price == 0) disabled @endif>
+                                <a class="color-fff" href="{{ url('/check-out') }}">Check Out</a>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

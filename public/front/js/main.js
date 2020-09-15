@@ -27,7 +27,6 @@ $(document).ready(function(){
 
 $(function () {
     $('.index-page-product-size').on('change', function () {
-        // console.log('index-page-product-size is changed ');
         var price = $(this).val();
         var div_for_price = $(this).parent().parent().children().next();
         var new_span_for_active_price = div_for_price.find(`[data-price='${price}']`);
@@ -40,13 +39,8 @@ $(function () {
 
 $(function () {
     $('.add-to-cart').on('click', function() {
-        // console.log('add-to-cart clicked');
-
         $('.add-to-cart').attr("disabled", true);
-
         var div_with_data = $(this).parent().find('.index-page-product-size');
-
-        // console.log(div_with_data);
         var selected_option = div_with_data.find(":selected").text();
         var selected_product_id = div_with_data.find(":selected").attr('data-product-id');
         var selected_product_size = div_with_data.find(":selected").attr('data-product-size');
@@ -54,13 +48,6 @@ $(function () {
         var selected_product_code = div_with_data.find(":selected").attr('data-product-code');
         var selected_product_price = div_with_data.find(":selected").val();
         var selected_product_quantity = 1;
-
-        // console.log(selected_option);
-        console.log(selected_product_id);
-        console.log(selected_product_size);
-        console.log(selected_product_price);
-        console.log(selected_product_name);
-        console.log(selected_product_code);
 
         $.ajax({
             type: "GET",
@@ -74,43 +61,27 @@ $(function () {
                 product_price: selected_product_price,
                 quantity: selected_product_quantity
             },
-            beforeSend: function() {
-
-            },
+            beforeSend: function() {},
             success: function(response) {
-                console.log('success');
-                console.log(response);
-                console.log(response.data.message);
-
                 $('.message-from-cart-action').removeClass('display-none');
                 $('.message-from-cart-action').addClass('background-success');
                 $('.message-from-cart-action').html(response.data.message);
-
                 $('.add-to-cart').attr("disabled", false);
 
                 setTimeout(function() {
                     $('.message-from-cart-action').addClass('display-none');
                     $('.message-from-cart-action').removeClass('background-success');
                 }, 5000);
-
-
             },
             error: function(response) {
-                console.log('error');
-                console.log(response);
-                console.log(response.data.message);
-
                 $('.message-from-cart-action').removeClass('display-none');
                 $('.message-from-cart-action').addClass('background-error');
                 $('.message-from-cart-action').html(response.data.message);
-
                 $('.add-to-cart').attr("disabled", false);
-
                 setTimeout(function() {
                     $('.message-from-cart-action').addClass('display-none');
                     $('.message-from-cart-action').removeClass('background-error');
                 }, 5000);
-
             }
         });
     });
@@ -118,90 +89,37 @@ $(function () {
 
 $(function() {
     $('.cart_quantity_up').on('click', function() {
-        console.log('cart_quantity_up pressed');
         var cart_id = $(this).attr('data-cart-id');
-        console.log('Up cart_id is: ' + cart_id);
-
-        var route =
-
-        sendAjaxForCart();
-
+        var action = 'up';
+        sendAjaxForCart(action, cart_id);
     });
 
     $('.cart_quantity_down').on('click', function() {
-        console.log('cart_quantity_down pressed');
-
         var cart_id = $(this).attr('data-cart-id');
-        console.log('Down cart_id is: ' + cart_id);
-
-
-
-
+        var action = 'down';
+        sendAjaxForCart(action, cart_id);
     });
 
     $('.cart_quantity_delete').on('click', function() {
-        console.log('cart_quantity_delete pressed');
         var cart_id = $(this).attr('data-cart-id');
-
-        console.log('Delete cart_id is: ' + cart_id);
-
-
-
-
+        var action = 'delete';
+        sendAjaxForCart(action, cart_id);
     });
 
-    function sendAjaxForCart(route, cart_id) {
-        console.log('sendAjaxForCart here');
-
-
+    function sendAjaxForCart(action, cart_id) {
         $.ajax({
             type: "GET",
             dataType: "JSON",
-            url: API_URL + route,
+            url: API_URL + 'actionFromCartPage',
             data: {
-                cart_id: cart_id
+                cart_id: cart_id,
+                action: action
             },
-            beforeSend: function() {
-
+            beforeSend: function() {},
+            success: function() {
+                location.reload(false);
             },
-            success: function(response) {
-                console.log('success');
-                console.log(response);
-                console.log(response.data.message);
-
-                $('.message-from-cart-action').removeClass('display-none');
-                $('.message-from-cart-action').addClass('background-success');
-                $('.message-from-cart-action').html(response.data.message);
-
-                $('.add-to-cart').attr("disabled", false);
-
-                setTimeout(function() {
-                    $('.message-from-cart-action').addClass('display-none');
-                    $('.message-from-cart-action').removeClass('background-success');
-                }, 5000);
-
-
-            },
-            error: function(response) {
-                console.log('error');
-                console.log(response);
-                console.log(response.data.message);
-
-                $('.message-from-cart-action').removeClass('display-none');
-                $('.message-from-cart-action').addClass('background-error');
-                $('.message-from-cart-action').html(response.data.message);
-
-                $('.add-to-cart').attr("disabled", false);
-
-                setTimeout(function() {
-                    $('.message-from-cart-action').addClass('display-none');
-                    $('.message-from-cart-action').removeClass('background-error');
-                }, 5000);
-
-            }
+            error: function() {}
         });
-
-
     };
-
 });

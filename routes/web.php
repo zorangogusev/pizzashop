@@ -24,6 +24,7 @@ use App\Http\Controllers\Front\CartController;
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/getFrontImage', [IndexController::class, 'getFrontImage']);
 Route::get('/viewcart', [CartController::class, 'index']);
+Route::get('/check-out', [IndexController::class, 'checkOut']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

@@ -34,8 +34,26 @@ class CartController extends Controller
         }
     }
 
-    public function delete()
+    public function actionFromCartPage(Request $request)
     {
-        echo 'ok';
+        $request = $request->all();
+        $cart_id = $request['cart_id'];
+        $action = $request['action'];
+
+        $row_in_cart  = Cart::where(['id' => $cart_id])->first();
+
+        if ($action == 'up') {
+            $new_quantity = $row_in_cart->quantity + 1;
+
+            return ($row_in_cart->update(['quantity' => $new_quantity])) ? response()->json('success', 200) : response()->json('error', 400);
+
+        } elseif ($action == 'down') {
+            $new_quantity = $row_in_cart->quantity - 1;
+
+            return ($row_in_cart->update(['quantity' => $new_quantity])) ? response()->json('success', 200)  : response()->json('error', 400);
+
+        } elseif ($action == 'delete') {
+            return ($row_in_cart->delete()) ? response()->json('success', 200) : response()->json('error', 400);
+        }
     }
 }

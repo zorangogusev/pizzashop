@@ -15,6 +15,11 @@ class IndexController extends Controller
         return view('front.index', compact('products'));
     }
 
+    public function checkOut()
+    {
+        $test = 'test';
+    }
+
     public function getFrontImage(Request $request)
     {
         \AppHelper::instance()->getImage($request);
