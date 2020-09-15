@@ -21,7 +21,7 @@ class CartController extends Controller
         }
         $add_to_cart['session_id'] = $session_id;
 
-        $row_in_cart  = Cart::where(['session_id' => $session_id, 'product_id' => $add_to_cart['product_id']])->first();
+        $row_in_cart  = Cart::where(['session_id' => $session_id, 'product_id' => $add_to_cart['product_id'], 'product_size' => $add_to_cart['product_size']])->first();
 
         if($row_in_cart == null) {
             return (Cart::create($add_to_cart)) ? response()->json(['data' => ['message' => 'Product added to cart']], 200) :

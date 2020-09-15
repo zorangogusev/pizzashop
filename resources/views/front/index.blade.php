@@ -14,7 +14,7 @@
                                     <div class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <a href="{{ url('/product-detail', $product->id) }}"><div class="div-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $product->image }}');"></div></a>
+                                                <a href="javascript:void(0)"><div class="div-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $product->image }}');"></div></a>
                                                 <p>{{ $product->name }}</p>
                                                 <p>{{ $product->description }}</p>
 

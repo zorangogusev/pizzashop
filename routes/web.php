@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Front\IndexController;
+use App\Http\Controllers\Front\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,7 @@ use App\Http\Controllers\Front\IndexController;
 /* Front Location */
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/getFrontImage', [IndexController::class, 'getFrontImage']);
+Route::get('/viewcart', [CartController::class, 'index']);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

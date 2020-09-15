@@ -5,16 +5,16 @@
                 <div class="col-sm-6">
                     <div class="contactinfo">
                         <ul class="nav nav-pills">
-                            <li><a href="#"><i class="fa fa-phone"></i> 010 010010</a></li>
-                            <li><a href="#"><i class="fa fa-envelope"></i> info@pizzashop.com</a></li>
+                            <li><a href="#"><i class="fa fa-phone font-size-16px"></i> 010 010010</a></li>
+                            <li><a href="#"><i class="fa fa-envelope font-size-16px"></i> info@pizzashop.com</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="" class="top-header-bgcolor"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="" class="top-header-bgcolor"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ url('/viewcart') }}" class="top-header-bgcolor font-size-20px"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="" class="top-header-bgcolor font-size-20px"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>

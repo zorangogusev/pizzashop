@@ -42,6 +42,8 @@ $(function () {
     $('.add-to-cart').on('click', function() {
         // console.log('add-to-cart clicked');
 
+        $('.add-to-cart').attr("disabled", true);
+
         var div_with_data = $(this).parent().find('.index-page-product-size');
 
         // console.log(div_with_data);
@@ -83,6 +85,9 @@ $(function () {
                 $('.message-from-cart-action').removeClass('display-none');
                 $('.message-from-cart-action').addClass('background-success');
                 $('.message-from-cart-action').html(response.data.message);
+
+                $('.add-to-cart').attr("disabled", false);
+
                 setTimeout(function() {
                     $('.message-from-cart-action').addClass('display-none');
                     $('.message-from-cart-action').removeClass('background-success');
@@ -98,6 +103,9 @@ $(function () {
                 $('.message-from-cart-action').removeClass('display-none');
                 $('.message-from-cart-action').addClass('background-error');
                 $('.message-from-cart-action').html(response.data.message);
+
+                $('.add-to-cart').attr("disabled", false);
+
                 setTimeout(function() {
                     $('.message-from-cart-action').addClass('display-none');
                     $('.message-from-cart-action').removeClass('background-error');
@@ -106,4 +114,94 @@ $(function () {
             }
         });
     });
+});
+
+$(function() {
+    $('.cart_quantity_up').on('click', function() {
+        console.log('cart_quantity_up pressed');
+        var cart_id = $(this).attr('data-cart-id');
+        console.log('Up cart_id is: ' + cart_id);
+
+        var route =
+
+        sendAjaxForCart();
+
+    });
+
+    $('.cart_quantity_down').on('click', function() {
+        console.log('cart_quantity_down pressed');
+
+        var cart_id = $(this).attr('data-cart-id');
+        console.log('Down cart_id is: ' + cart_id);
+
+
+
+
+    });
+
+    $('.cart_quantity_delete').on('click', function() {
+        console.log('cart_quantity_delete pressed');
+        var cart_id = $(this).attr('data-cart-id');
+
+        console.log('Delete cart_id is: ' + cart_id);
+
+
+
+
+    });
+
+    function sendAjaxForCart(route, cart_id) {
+        console.log('sendAjaxForCart here');
+
+
+        $.ajax({
+            type: "GET",
+            dataType: "JSON",
+            url: API_URL + route,
+            data: {
+                cart_id: cart_id
+            },
+            beforeSend: function() {
+
+            },
+            success: function(response) {
+                console.log('success');
+                console.log(response);
+                console.log(response.data.message);
+
+                $('.message-from-cart-action').removeClass('display-none');
+                $('.message-from-cart-action').addClass('background-success');
+                $('.message-from-cart-action').html(response.data.message);
+
+                $('.add-to-cart').attr("disabled", false);
+
+                setTimeout(function() {
+                    $('.message-from-cart-action').addClass('display-none');
+                    $('.message-from-cart-action').removeClass('background-success');
+                }, 5000);
+
+
+            },
+            error: function(response) {
+                console.log('error');
+                console.log(response);
+                console.log(response.data.message);
+
+                $('.message-from-cart-action').removeClass('display-none');
+                $('.message-from-cart-action').addClass('background-error');
+                $('.message-from-cart-action').html(response.data.message);
+
+                $('.add-to-cart').attr("disabled", false);
+
+                setTimeout(function() {
+                    $('.message-from-cart-action').addClass('display-none');
+                    $('.message-from-cart-action').removeClass('background-error');
+                }, 5000);
+
+            }
+        });
+
+
+    };
+
 });
