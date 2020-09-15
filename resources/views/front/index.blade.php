@@ -5,6 +5,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 padding-right">
+                    <div class="message-from-cart-action display-none"></div>
                     <div class="features_items"><!--features_items-->
                         <h2 class="title text-center">Items</h2>
                         @foreach ($products as $product)

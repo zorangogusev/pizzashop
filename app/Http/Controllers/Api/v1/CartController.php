@@ -13,45 +13,25 @@ class CartController extends Controller
 {
     public function addToCard(Request $request)
     {
-//        echo 'ok';
         $add_to_cart = $request->all();
         $session_id = Session::get('session_id');
         if(empty($session_id)) {
             $session_id = Str::random(40);
             $request->session()->put('session_id', $session_id);
         }
+        $add_to_cart['session_id'] = $session_id;
 
-        $session_in_cart  = Cart::where(['session_id' => $session_id, 'product_id' => $add_to_cart['product_id']])->first();
+        $row_in_cart  = Cart::where(['session_id' => $session_id, 'product_id' => $add_to_cart['product_id']])->first();
 
-        if($session_in_cart == null) {
-            // create
-//            ['product_id', 'product_name', 'product_code', 'size', 'price', 'quantity', 'user_email', 'session_id']
-
-//            \DB::enableQueryLog();
-            $cart = new Cart;
-            $cart->product_id = $add_to_cart['product_id'];
-            $cart->product_name = $add_to_cart['product_name'];
-            $cart->product_code = $add_to_cart['product_code'];
-            $cart->product_size = $add_to_cart['product_size'];
-            $cart->product_price = $add_to_cart['product_price'];
-            $cart->quantity = '5';
-            $cart->user_email = 'test@test.com';
-            $cart->session_id = $session_id;
-
-
-            if(Cart::create($add_to_cart)) {
-                $test = 'test';
-            } else {
-                $test = 'test';
-            }
-//            dd(\DB::getQueryLog());
+        if($row_in_cart == null) {
+            return (Cart::create($add_to_cart)) ? response()->json(['data' => ['message' => 'Product added to cart']], 200) :
+                response()->json(['data' => ['message' => 'Error, Please try again']], 400);
         } else {
-            // update
+            $count_product = $row_in_cart->quantity + $add_to_cart['quantity'];
+
+            return ($row_in_cart->update(['quantity' => $count_product])) ? response()->json(['data' => ['message' => 'Product added to cart']], 200) :
+                response()->json(['data' => ['message' => 'Error, Please try again']], 400);
         }
-
-        $test = 'test';
-
-
     }
 
     public function delete()

@@ -51,6 +51,7 @@ $(function () {
         var selected_product_name = div_with_data.find(":selected").attr('data-product-name');
         var selected_product_code = div_with_data.find(":selected").attr('data-product-code');
         var selected_product_price = div_with_data.find(":selected").val();
+        var selected_product_quantity = 1;
 
         // console.log(selected_option);
         console.log(selected_product_id);
@@ -68,7 +69,8 @@ $(function () {
                 product_size: selected_product_size,
                 product_name: selected_product_name,
                 product_code: selected_product_code,
-                product_price: selected_product_price
+                product_price: selected_product_price,
+                quantity: selected_product_quantity
             },
             beforeSend: function() {
 
@@ -76,10 +78,31 @@ $(function () {
             success: function(response) {
                 console.log('success');
                 console.log(response);
+                console.log(response.data.message);
+
+                $('.message-from-cart-action').removeClass('display-none');
+                $('.message-from-cart-action').addClass('background-success');
+                $('.message-from-cart-action').html(response.data.message);
+                setTimeout(function() {
+                    $('.message-from-cart-action').addClass('display-none');
+                    $('.message-from-cart-action').removeClass('background-success');
+                }, 5000);
+
+
             },
             error: function(response) {
                 console.log('error');
                 console.log(response);
+                console.log(response.data.message);
+
+                $('.message-from-cart-action').removeClass('display-none');
+                $('.message-from-cart-action').addClass('background-error');
+                $('.message-from-cart-action').html(response.data.message);
+                setTimeout(function() {
+                    $('.message-from-cart-action').addClass('display-none');
+                    $('.message-from-cart-action').removeClass('background-error');
+                }, 5000);
+
             }
         });
     });
