@@ -26,7 +26,7 @@
                                 <p>{{ $cart_data->product_code }} | {{ $cart_data->product_size }}</p>
                             </td>
                             <td class="cart_price">
-                                <p>${{ $cart_data->product_price }}</p>
+                                <p><i class="fa fa-euro-sign"></i> {{ $cart_data->product_price }}</p>
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
@@ -36,7 +36,7 @@
                                 </div>
                             </td>
                             <td class="cart_total">
-                                <p class="cart_total_price">$ {{ $cart_data->product_price * $cart_data->quantity }}</p>
+                                <p class="cart_total_price"><i class="fa fa-euro-sign"></i> {{ $cart_data->product_price * $cart_data->quantity }}</p>
                             </td>
                             <td class="cart_delete">
                                 <a class="cart_quantity_delete cursor-pointer" data-cart-id="{{ $cart_data->id }}"><i class="fa fa-times"></i></a>
@@ -56,7 +56,7 @@
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Total <span>$ {{ $total_price }}</span></li>
+                            <li>Total <span><i class="fa fa-euro-sign"></i> {{ $total_price }}</span></li>
                         </ul>
                         <div class="margin-left-20px">
                             <button class="btn btn-default check_out" @if ($total_price == 0) disabled @endif>

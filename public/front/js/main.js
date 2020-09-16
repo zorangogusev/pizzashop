@@ -123,3 +123,21 @@ $(function() {
         });
     };
 });
+
+
+$(function() {
+    $('#delivery_mobile').on('keyup', function() {
+        console.log('here');
+        var regex = /^(?:[1-9]\d*|0)?(?:\.\d+)?$/;
+        var check_regex = regex.exec($(this).val());
+
+        if (!check_regex) {
+            console.log('not a number');
+            $('#only-numbers-allowed').removeClass('display-none');
+            $('.order-now-button').attr('disabled', true);
+        } else {
+            $('#only-numbers-allowed').addClass('display-none');
+            $('.order-now-button').attr('disabled', false);
+        }
+    });
+});

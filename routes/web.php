@@ -29,7 +29,7 @@ Route::post('/user-register', [UserController::class, 'register']);
 Route::post('/user-login', [UserController::class, 'login']);
 
 Route::middleware([FrontLogin::class])->group(function () {
-    Route::get('/check-out', [IndexController::class, 'checkOut']);
+    Route::get('/check-out', [UserController::class, 'checkOut']);
     Route::get('/logout', [UserController::class, 'logout']);
 });
 

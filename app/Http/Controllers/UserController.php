@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Models\Cart;
 
 class UserController extends Controller
 {
@@ -51,5 +52,18 @@ class UserController extends Controller
         Session::forget('frontSession');
 
         return redirect('/');
+    }
+
+    public function checkOut()
+    {
+        $session_id = Session::get('session_id');
+        $cart_datas = Cart::with('product')->where('session_id',$session_id)->get();
+        $total_price = 0;
+        foreach ($cart_datas as $cart_data){
+            $total_price += $cart_data->product_price * $cart_data->quantity;
+        }
+        $shipping = 5;
+
+        return view('front.users.check-out', compact('cart_datas', 'total_price', 'shipping'));
     }
 }
