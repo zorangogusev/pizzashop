@@ -44,14 +44,13 @@ class CartController extends Controller
 
         if ($action == 'up') {
             $new_quantity = $row_in_cart->quantity + 1;
-
             return ($row_in_cart->update(['quantity' => $new_quantity])) ? response()->json('success', 200) : response()->json('error', 400);
-
         } elseif ($action == 'down') {
-            $new_quantity = $row_in_cart->quantity - 1;
-
-            return ($row_in_cart->update(['quantity' => $new_quantity])) ? response()->json('success', 200)  : response()->json('error', 400);
-
+            if ($row_in_cart->quantity > 1) {
+                $new_quantity = $row_in_cart->quantity - 1;
+                return ($row_in_cart->update(['quantity' => $new_quantity])) ? response()->json('success', 200)  : response()->json('error', 400);
+            }
+            return ($row_in_cart->delete()) ? response()->json('success', 200) : response()->json('error', 400);
         } elseif ($action == 'delete') {
             return ($row_in_cart->delete()) ? response()->json('success', 200) : response()->json('error', 400);
         }
