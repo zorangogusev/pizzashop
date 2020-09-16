@@ -13,36 +13,37 @@
     <div class="container">
         <div class="row">
             <form action="{{url('/order-now')}}" method="post" class="form-horizontal">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="col-sm-12">
                     <div class="signup-form"><!--sign up form-->
                         <legend>Delivery Address</legend>
                         <div class="row">
                             <div class="col-md-5" >
                                 <div class="form-group">
-                                    <label class="red-asterix" for="delivery_name">Name: </label>
-                                    <input type="text" class="form-control" name="delivery_name" id="delivery_name" value="{{ Auth::user()->name }}" placeholder="Delivery Name" required>
+                                    <label class="red-asterix" for="name">Name: </label>
+                                    <input type="text" class="form-control" name="name" id="name" value="{{ Auth::user()->name }}" placeholder="Delivery Name" required>
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label class="red-asterix" for="delivery_address">Address: </label>
-                                    <input type="text" class="form-control" value="" name="delivery_address" id="delivery_address" placeholder="Delivery Address" required>
+                                    <label class="red-asterix" for="address">Address: </label>
+                                    <input type="text" class="form-control" value="" name="address" id="address" placeholder="Delivery Address" required>
                                 </div>
                             </div>
                             <div class="col-md-2"></div>
                             <div class="col-md-5">
                                 <div class="form-group">
-                                    <label class="red-asterix" for="delivery_city">City: </label>
-                                    <input type="text" class="form-control" name="delivery_city" value="" id="delivery_city" placeholder="Delivery City" required>
+                                    <label class="red-asterix" for="city">City: </label>
+                                    <input type="text" class="form-control" name="city" value="" id="city" placeholder="Delivery City" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="red-asterix" for="delivery_mobile">Mobile: </label>
-                                    <input type="text" class="form-control" name="delivery_mobile" value="" id="delivery_mobile" placeholder="Delivery Mobile" required>
+                                    <label class="red-asterix" for="mobile">Mobile: </label>
+                                    <input type="text" class="form-control" name="mobile" value="" id="mobile" placeholder="Delivery Mobile" required>
                                     <span id="only-numbers-allowed" class="color-red display-none"><i><b>Only numbers allowed!!!</b></i></span>
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="total_price" value="{{ $total_price }}">
+                        <input type="hidden" name="order_total" value="{{ $total_price }}">
                     </div><!--/sign up form-->
                 </div>
 

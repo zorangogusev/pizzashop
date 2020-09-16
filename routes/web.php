@@ -5,6 +5,7 @@ use App\Http\Controllers\Front\IndexController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\FrontLogin;
+use App\Http\Controllers\Front\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,7 @@ Route::post('/user-login', [UserController::class, 'login']);
 
 Route::middleware([FrontLogin::class])->group(function () {
     Route::get('/check-out', [UserController::class, 'checkOut']);
+    Route::post('/order-now', [OrderController::class, 'orderNow']);
     Route::get('/logout', [UserController::class, 'logout']);
 });
 

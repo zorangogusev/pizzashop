@@ -126,7 +126,7 @@ $(function() {
 
 
 $(function() {
-    $('#delivery_mobile').on('keyup', function() {
+    $('#mobile').on('keyup', function() {
         console.log('here');
         var regex = /^(?:[1-9]\d*|0)?(?:\.\d+)?$/;
         var check_regex = regex.exec($(this).val());

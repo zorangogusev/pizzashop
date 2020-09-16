@@ -70,8 +70,12 @@
 }
 
 .cursor-pointer { cursor: pointer; }
+.margin-top-100px { margin-top: 100px !important; }
 .margin-left-20px { margin-left: 20px; }
 .color-fff { color: #FFFFFF !important;}
 .padding-top-9px { padding-top: 9px !important; }
 .padding-left-15px { padding-left: 15px !important; }
 .color-red { color: red; !important;}
+.padding-bottom-200px { margin-bottom: 200px; }
+.padding-bottom-250px { margin-bottom: 250px; }
+.padding-bottom-350px { margin-bottom: 350px; }
