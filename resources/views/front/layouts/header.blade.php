@@ -15,7 +15,12 @@
                     @if (Auth::user())
                         <div class="mainmenu pull-right">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li class="dropdown"><a href="#" class="font-size-20px">{{ Auth::user()->name }}<i class="fa fa-angle-down"></i></a>
+                                <li class="dropdown">
+                                    <a href="#" class="font-size-20px padding-top-9px padding-left-15px">
+                                        <i class="fa fa-user-check"></i>
+                                        {{ Auth::user()->name }}
+                                        <i class="fa fa-angle-down"></i>
+                                    </a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="{{ url('/list-orders') }}">Orders</a></li>
                                         <li><a href="{{ url('/logout') }}">Logout</a></li>
@@ -56,7 +61,6 @@
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="{{url('/list-products')}}">Products</a></li>
-                                    <li><a href="{{url('/myaccount')}}">Account</a></li>
                                     <li><a href="{{url('/viewcart')}}">Cart</a></li>
                                 </ul>
                             </li>

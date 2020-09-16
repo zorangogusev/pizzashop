@@ -7,7 +7,7 @@
                 <div class="col-sm-12 padding-right">
                     <div class="message-from-cart-action display-none"></div>
                     <div class="features_items"><!--features_items-->
-                        <h2 class="title text-center">Items</h2>
+                        <h2 class="title text-center">Products</h2>
                         @foreach ($products as $product)
                             @if ($product->category->status == 1)
                                 <div class="col-sm-3">
