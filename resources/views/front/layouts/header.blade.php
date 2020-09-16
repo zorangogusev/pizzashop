@@ -14,7 +14,7 @@
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="{{ url('/viewcart') }}" class="top-header-bgcolor font-size-20px"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="" class="top-header-bgcolor font-size-20px"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="{{ url('/login-page') }}" class="top-header-bgcolor font-size-20px"><i class="fa fa-lock"></i> Login</a></li>
                         </ul>
                     </div>
                 </div>

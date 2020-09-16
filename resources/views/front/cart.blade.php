@@ -1,7 +1,5 @@
 @extends('front.layouts.master')
 @section('title','Cart Page')
-@section('slider')
-@endsection
 @section('content')
     <section id="cart_items">
         <div class="container">
