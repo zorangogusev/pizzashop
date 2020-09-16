@@ -15,10 +15,6 @@ class UserController extends Controller
 
     public function index()
     {
-//        $id = Auth::id();
-//        $user = Auth::user();
-//        echo $id;die();
-
         return view('front.users.login-page');
     }
 
@@ -49,4 +45,11 @@ class UserController extends Controller
         }
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        Session::forget('frontSession');
+
+        return redirect('/');
+    }
 }

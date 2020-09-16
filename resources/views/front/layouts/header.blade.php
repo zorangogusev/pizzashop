@@ -1,3 +1,4 @@
+
 <header id="header"><!--header-->
     <div class="header_top"><!--header_top-->
         <div class="container">
@@ -11,10 +12,24 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    @if (Auth::user())
+                        <div class="mainmenu pull-right">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li class="dropdown"><a href="#" class="font-size-20px">{{ Auth::user()->name }}<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="{{ url('/list-orders') }}">Orders</a></li>
+                                        <li><a href="{{ url('/logout') }}">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    @endif
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a href="{{ url('/viewcart') }}" class="top-header-bgcolor font-size-20px"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="{{ url('/login-page') }}" class="top-header-bgcolor font-size-20px"><i class="fa fa-lock"></i> Login</a></li>
+                            @if (! Auth::user())
+                                <li><a href="{{ url('/login-page') }}" class="top-header-bgcolor font-size-20px"><i class="fa fa-lock"></i> Login</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
