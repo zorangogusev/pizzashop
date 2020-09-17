@@ -59,9 +59,11 @@
                             <li>Total <span><i class="fa fa-euro-sign"></i> {{ $total_price }}</span></li>
                         </ul>
                         <div class="margin-left-20px">
-                            <button class="btn btn-default check_out" @if ($total_price == 0) disabled @endif>
-                                <a class="color-fff" href="{{ url('/check-out') }}">Check Out</a>
-                            </button>
+                            <a class="color-fff" href="{{ url('/check-out') }}">
+                                <button class="btn btn-default check_out" @if ($total_price == 0) disabled @endif>
+                                    Check Out
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>

@@ -31,8 +31,10 @@ Route::post('/user-login', [UserController::class, 'login']);
 
 Route::middleware([FrontLogin::class])->group(function () {
     Route::get('/check-out', [UserController::class, 'checkOut']);
-    Route::post('/order-now', [OrderController::class, 'orderNow']);
     Route::get('/logout', [UserController::class, 'logout']);
+
+    Route::get('/user-orders', [OrderController::class, 'userOrders']);
+    Route::post('/order-now', [OrderController::class, 'orderNow']);
 });
 
 

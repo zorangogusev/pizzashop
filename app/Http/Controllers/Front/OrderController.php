@@ -17,9 +17,15 @@ class OrderController extends Controller
         $input_data['order_status'] = 1;
         $input_data['user_id'] = Auth::user()->id;
         $input_data['user_email'] = Auth::user()->email;
-
-        Order::create($input_data);
+        if(Order::create($input_data)) Session::forget('session_id');
 
         return view('front.order-success');
+    }
+
+    public function userOrders(Request $request)
+    {
+        $user_orders = Order::where('user_id', Auth::user()->id)->get();
+
+        return view('front.orders', compact('user_orders'));
     }
 }
