@@ -26,6 +26,17 @@
     outline: 1px solid #DDd;
     margin: 15px auto 0 auto;
 }
+.div-pizza-shop-image {
+    max-width: 100%;
+    width: 400px;
+    height: 220px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 4px solid #fff;
+    outline: 1px solid #DDd;
+    margin: 15px auto 0 auto;
+}
 .message-from-cart-action {
     position:fixed;
     top: 20px;

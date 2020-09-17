@@ -15,9 +15,9 @@ class IndexController extends Controller
         return view('front.index', compact('products'));
     }
 
-    public function checkOut()
+    public function contact()
     {
-        $test = 'test';
+        return view('front.contact');
     }
 
     public function getFrontImage(Request $request)
