@@ -12,7 +12,6 @@ class OrderController extends Controller
 {
     public function orderNow(Request $request)
     {
-        $test = 'test';
         $input_data = $request->all();
         $input_data['order_status'] = 1;
         $input_data['user_id'] = Auth::user()->id;

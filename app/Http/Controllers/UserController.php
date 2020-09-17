@@ -27,10 +27,15 @@ class UserController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
         $input_data = $request->all();
+        $loginData['password'] = $input_data['password'];
+        $loginData['email'] = $input_data['email'];
         $input_data['password'] = Hash::make($input_data['password']);
-        User::create($input_data);
+        if (User::create($input_data)) {
+            Auth::attempt(['email' => $loginData['email'], 'password' => $loginData['password']]);
+            Session::put('frontSession', $input_data['email']);
+        }
 
-        return back()->with('message', 'You have been registered, please sing in');
+        return redirect('/');
     }
 
     public function login(Request $request)
