@@ -62,6 +62,7 @@ class UserController extends Controller
     public function checkOut()
     {
         $session_id = Session::get('session_id');
+        if (empty($session_id)) return redirect('/');
         $cart_datas = Cart::with('product')->where('session_id',$session_id)->get();
         $total_price = 0;
         foreach ($cart_datas as $cart_data){
