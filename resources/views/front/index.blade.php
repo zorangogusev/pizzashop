@@ -11,7 +11,7 @@
                         @foreach ($products as $product)
                             @if ($product->category->status == 1)
                                 <div class="col-sm-3">
-                                    <div class="product-image-wrapper">
+                                    <div id="{{ strtolower($product->name) }}" class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
                                                 <a href="javascript:void(0)"><div class="div-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $product->image }}');"></div></a>

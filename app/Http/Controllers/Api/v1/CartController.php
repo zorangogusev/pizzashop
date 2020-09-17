@@ -17,7 +17,7 @@ class CartController extends Controller
         $session_id = Session::get('session_id');
         if(empty($session_id)) {
             $session_id = Str::random(40);
-            $request->session()->put('session_id', $session_id);
+            Session::put('session_id', $session_id);
         }
         $add_to_cart['session_id'] = $session_id;
 
@@ -50,11 +50,24 @@ class CartController extends Controller
                 $new_quantity = $row_in_cart->quantity - 1;
                 return ($row_in_cart->update(['quantity' => $new_quantity])) ? response()->json('success', 200)  : response()->json('error', 400);
             }
-            Session::forget('session_id');
-            return ($row_in_cart->delete()) ? response()->json('success', 200) : response()->json('error', 400);
+            $deleteRow = $this->deleteRowInCart($row_in_cart, $request);
+            return ($deleteRow) ? response()->json('success', 200) : response()->json('error', 400);
         } elseif ($action == 'delete') {
-            Session::forget('session_id');
-            return ($row_in_cart->delete()) ? response()->json('success', 200) : response()->json('error', 400);
+            $deleteRow = $this->deleteRowInCart($row_in_cart, $request);
+            return ($deleteRow) ? response()->json('success', 200) : response()->json('error', 400);
         }
+    }
+
+    private function deleteRowInCart($row_in_cart, $request)
+    {
+        if ($row_in_cart->delete()) {
+            $session_id = Session::get('session_id');
+            $check_for_products_in_cart  = Cart::where(['session_id' => $session_id])->first();
+            if ($check_for_products_in_cart == null) {
+                Session::forget('session_id');
+            }
+            return true;
+        }
+        return false;
     }
 }

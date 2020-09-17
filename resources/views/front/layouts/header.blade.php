@@ -80,9 +80,13 @@
                             <li><a href="#">Pound</a></li>
                         </ul>
                     </div>
-                    <div class="search_box pull-right">
-                        <input type="text" placeholder="Search"/>
-                    </div>
+
+                    @if (isset($indexPage))
+                        <div class="search_box pull-right">
+                            <input id="search" class="form-control" type="text" placeholder="Search by Name"/>
+                            <span id="no-product-with-that-name" class="color-red display-none"><i>Product unavailable</i></span>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

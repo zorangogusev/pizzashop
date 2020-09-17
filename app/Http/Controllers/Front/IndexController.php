@@ -10,9 +10,10 @@ class IndexController extends Controller
 {
     public function index()
     {
+        $indexPage = 1;
         $products = Product::with('attributes')->get();
 
-        return view('front.index', compact('products'));
+        return view('front.index', compact('products', 'indexPage'));
     }
 
     public function contact()

@@ -142,3 +142,31 @@ $(function() {
         }
     });
 });
+
+$(function() {
+    $('#search').on('keyup', function(e) {
+        if(e.which === 13){
+            $(this).attr("disabled", "disabled");
+            var input = $(this).val().toLowerCase();
+            if($("#" + input).length == 0) {
+
+                    $("#no-product-with-that-name").removeClass('display-none');
+            } else {
+                document.getElementById(input).scrollIntoView({  block: 'center', behavior: 'smooth' });
+                $("#" + input).addClass('display-pink-border');
+                setTimeout(function() {
+                    $("#" + input).removeClass('display-pink-border');
+                }, 3000);
+                $(this).val('');
+                $("#no-product-with-that-name").addClass('display-none');
+            }
+            $(this).removeAttr("disabled");
+        }
+    });
+
+    $('#search').on('focusout', function(e) {
+        if($(this).val() == 0) {
+            $("#no-product-with-that-name").addClass('display-none');
+        }
+    });
+});
