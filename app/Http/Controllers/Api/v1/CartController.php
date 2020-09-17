@@ -50,8 +50,10 @@ class CartController extends Controller
                 $new_quantity = $row_in_cart->quantity - 1;
                 return ($row_in_cart->update(['quantity' => $new_quantity])) ? response()->json('success', 200)  : response()->json('error', 400);
             }
+            Session::forget('session_id');
             return ($row_in_cart->delete()) ? response()->json('success', 200) : response()->json('error', 400);
         } elseif ($action == 'delete') {
+            Session::forget('session_id');
             return ($row_in_cart->delete()) ? response()->json('success', 200) : response()->json('error', 400);
         }
     }

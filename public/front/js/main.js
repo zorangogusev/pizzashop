@@ -64,6 +64,7 @@ $(function () {
             beforeSend: function() {},
             success: function(response) {
                 $('.message-from-cart-action').removeClass('display-none');
+                $('.nav-bar-check-out-button').removeClass('display-none');
                 $('.message-from-cart-action').addClass('background-success');
                 $('.message-from-cart-action').html(response.data.message);
                 $('.add-to-cart').attr("disabled", false);

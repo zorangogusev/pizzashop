@@ -62,6 +62,7 @@
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="{{ url('/') }}">Products</a></li>
                                     <li><a href="{{ url('/viewcart') }}">Cart</a></li>
+                                    <li class="nav-bar-check-out-button @if (empty(Session::get('session_id'))) display-none @endif"><a href="{{ url('/check-out') }}">Check Out</a></li>
                                 </ul>
                             </li>
                             <li><a href="{{ url('/contact') }}">Contact</a></li>
