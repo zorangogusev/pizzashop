@@ -45,7 +45,7 @@ class UserController extends Controller
 
         if (Auth::attempt(['email' => $input_data['email'], 'password' => $input_data['password']], $remember)) {
             Session::put('frontSession', $input_data['email']);
-            return redirect('/viewcart');
+            return (empty(Session::get('session_id'))) ? redirect('/') : redirect('/viewcart');
         } else {
             return back()->with('message','Account is not Valid!');
         }

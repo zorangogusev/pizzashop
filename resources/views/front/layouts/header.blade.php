@@ -22,7 +22,7 @@
                                         <i class="fa fa-angle-down"></i>
                                     </a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="{{ url('/user-orders') }}">Orders</a></li>
+                                        <li><a href="{{ url('/user-orders') }}">My Orders</a></li>
                                         <li><a href="{{ url('/logout') }}">Logout</a></li>
                                     </ul>
                                 </li>
