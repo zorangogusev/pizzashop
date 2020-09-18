@@ -31,7 +31,7 @@
                     @endif
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
-                            <li><a href="{{ url('/viewcart') }}" class="top-header-bgcolor font-size-20px"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="{{ url('/viewcart') }}" class="top-header-bgcolor font-size-20px">Cart<i class="fa fa-shopping-cart"></i> <span class="header-cart-total">{{ $itemsInCart }}</span></a></li>
                             @if (! Auth::user())
                                 <li><a href="{{ url('/login-page') }}" class="top-header-bgcolor font-size-20px"><i class="fa fa-lock"></i> Login</a></li>
                             @endif
@@ -61,7 +61,7 @@
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="{{ url('/') }}">Products</a></li>
-                                    <li><a href="{{ url('/viewcart') }}">Cart</a></li>
+                                    <li><a href="{{ url('/viewcart') }}">Cart  <span class="header-cart-total float-none">{{ $itemsInCart }}</span></a></li>
                                     <li class="nav-bar-check-out-button @if (empty(Session::get('session_id'))) display-none @endif"><a href="{{ url('/check-out') }}">Check Out</a></li>
                                 </ul>
                             </li>

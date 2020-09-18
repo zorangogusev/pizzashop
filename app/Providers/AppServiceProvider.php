@@ -13,7 +13,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        view()->composer('*',function($view){
+
+            $itemsInCart = \AppHelper::instance()->countItemsInCart();
+            $view->with('itemsInCart', $itemsInCart );
+
+        });
     }
 
     /**

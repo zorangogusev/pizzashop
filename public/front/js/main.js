@@ -66,7 +66,8 @@ $(function () {
                 $('.message-from-cart-action').removeClass('display-none');
                 $('.nav-bar-check-out-button').removeClass('display-none');
                 $('.message-from-cart-action').addClass('background-success');
-                $('.message-from-cart-action').html(response.data.message);
+                setTimeout(function() { $('.message-from-cart-action').html(response.data.message); }, 300);
+                setTimeout(function() { $('.header-cart-total').html(response.data.itemsInCart); }, 500);
                 $('.add-to-cart').attr("disabled", false);
 
                 setTimeout(function() {

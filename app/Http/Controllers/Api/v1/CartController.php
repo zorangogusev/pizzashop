@@ -20,17 +20,23 @@ class CartController extends Controller
             Session::put('session_id', $session_id);
         }
         $add_to_cart['session_id'] = $session_id;
-
         $row_in_cart  = Cart::where(['session_id' => $session_id, 'product_id' => $add_to_cart['product_id'], 'product_size' => $add_to_cart['product_size']])->first();
 
         if($row_in_cart == null) {
-            return (Cart::create($add_to_cart)) ? response()->json(['data' => ['message' => 'Product added to cart']], 200) :
-                response()->json(['data' => ['message' => 'Error, Please try again']], 400);
+            if(Cart::create($add_to_cart)) {
+                $itemsInCart = \AppHelper::instance()->countItemsInCart();
+                return response()->json(['data' => ['message' => 'Product added to cart', 'itemsInCart' => $itemsInCart]], 200);
+            } else {
+                return response()->json(['data' => ['message' => 'Error, Please try again']], 400);
+            }
         } else {
             $count_product = $row_in_cart->quantity + $add_to_cart['quantity'];
-
-            return ($row_in_cart->update(['quantity' => $count_product])) ? response()->json(['data' => ['message' => 'Product added to cart']], 200) :
-                response()->json(['data' => ['message' => 'Error, Please try again']], 400);
+            if($row_in_cart->update(['quantity' => $count_product])) {
+                $itemsInCart = \AppHelper::instance()->countItemsInCart();
+                return response()->json(['data' => ['message' => 'Product added to cart', 'itemsInCart' => $itemsInCart]], 200);
+            } else {
+                return response()->json(['data' => ['message' => 'Error, Please try again']], 400);
+            }
         }
     }
 
