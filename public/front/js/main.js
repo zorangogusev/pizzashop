@@ -144,13 +144,12 @@ $(function() {
 });
 
 $(function() {
-    $('#search').on('keyup', function(e) {
+    $('#search').on('onkeypress', function(e) {
         if(e.which === 13){
             $(this).attr("disabled", "disabled");
             var input = $(this).val().toLowerCase();
             if($("#" + input).length == 0) {
-
-                    $("#no-product-with-that-name").removeClass('display-none');
+                $("#no-product-with-that-name").removeClass('display-none');
             } else {
                 document.getElementById(input).scrollIntoView({  block: 'center', behavior: 'smooth' });
                 $("#" + input).addClass('display-pink-border');
@@ -168,5 +167,32 @@ $(function() {
         if($(this).val() == 0) {
             $("#no-product-with-that-name").addClass('display-none');
         }
+    });
+});
+
+$(function() {
+    $('#showOrderDetails').on('show.bs.modal', function (e) {
+            e.stopPropagation();
+    });
+    $('.orders-page-view-order-details').on('click', function(e) {
+        var order_id = $(this).attr('data-order-id');
+        console.log('order_id is: ' + order_id);
+
+        $.ajax({
+            type: "GET",
+            dataType: "JSON",
+            url: API_URL + 'getOrderDetails',
+            data: {
+                order_id: order_id,
+            },
+            beforeSend: function() {},
+            success: function(response) {
+                $('#div-to-show-modal-with-order-products').html(response.data.modal_for_product);
+                $('#showOrderDetails').modal('show');
+            },
+            error: function(response) {
+
+            }
+        });
     });
 });

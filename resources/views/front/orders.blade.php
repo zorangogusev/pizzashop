@@ -12,6 +12,7 @@
                             <td class="image" align="center">Order ID</td>
                             <td class="description" align="center">Order total</td>
                             <td class="price" align="center">Date</td>
+                            <td class="price" align="center">Details</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -26,6 +27,11 @@
                                 <td align="center">
                                     <p class="">{{ $order->created_at }}</p>
                                 </td>
+                                <td align="center">
+                                    <button type="button" class="btn btn-primary btn-lg background-none orders-page-view-order-details" data-toggle="modal"  data-order-id="{{ $order->id }}">
+                                        <i class="fa fa-eye font-size-20px main-color cursor-pointer" aria-hidden="true"></i>
+                                    </button>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -38,4 +44,5 @@
         @endif
     </div>
     <div class="padding-bottom-200px"></div>
+<div id="div-to-show-modal-with-order-products"></div>
 @endsection

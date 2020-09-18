@@ -2,9 +2,8 @@
 @section('title','Order Success Page')
 @section('content')
     <div class="container">
-        <h3 class="margin-top-100px">YOUR ORDER HAS BEEN PLACED</h3>
-
-        Thank you for ordering.
+        <h3 class="margin-top-100px">{{ $message1 }}</h3>
+        <p>{{ $message2 }}</p>
     </div>
     <div class="padding-bottom-350px"></div>
 @endsection
