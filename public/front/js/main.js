@@ -143,7 +143,8 @@ $(function() {
 });
 
 $(function() {
-    $('#search').on('onkeypress', function(e) {
+    $('#search').on('keyup', function(e) {
+        console.log('here');
         if(e.which === 13){
             $(this).attr("disabled", "disabled");
             var input = $(this).val().toLowerCase();
