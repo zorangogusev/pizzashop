@@ -38,10 +38,16 @@
                     </table>
                 </div>
             </section>
-        @else
-            <h3 class="margin-top-100px">You don't have orders until now</h3>
-            <div class="padding-bottom-200px"></div>
-        @endif
+            <div class="orders-pagination-links text-right">
+                <a href="{{ $user_orders->previousPageUrl() }}"><i class="fas fa-angle-double-left"></i> Previous</a>
+                @for($i = 1; $i <= ($user_orders->currentPage() + ($user_orders->total() - $user_orders->currentPage())); $i++)
+                    @if ((($user_orders->currentPage() - $i) < 4) && (((($user_orders->currentPage() + 4) - $i) > 0) && ((($user_orders->currentPage() + 4) - $i) < $user_orders->lastPage())))
+                        <a href="{{ $user_orders->url($i) }}" class="page-number-{{ $i }} @if ($i == $user_orders->currentPage()) active-pagination  @endif">{{ $i }}</a>
+                    @endif
+                @endfor
+                <a href="{{ $user_orders->nextPageUrl() }}">Next <i class="fas fa-angle-double-right"></i></a>
+            </div>
+@endif
     </div>
     <div class="padding-bottom-200px"></div>
 <div id="div-to-show-modal-with-order-products"></div>

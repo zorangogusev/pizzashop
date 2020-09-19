@@ -122,4 +122,16 @@
 }
 .main-color { color: #FE980F; }
 .width-60 { width: 60% !important; }
+.width-100 { width: 100% !important; }
 .float-none { float: none !important; }
+.border-none { border: none !important; }
+.orders-pagination-links > a {
+    padding: 5px;
+    color: #696763;
+
+}
+.active-pagination {
+    padding: 10px !important;
+    background: #FE980F !important;
+    color: #FFF !important;
+}

@@ -5,10 +5,31 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="modalLabel">Order Products</h4>
+                <h4 class="modal-title" id="modalLabel">Order Details</h4>
             </div>
             <div class="modal-body">
                 <section id="cart_items" class="row">
+                    <h5 class="font-size-20px">Order ID {{ $order->id }}</h5>
+                    <table class="table-responsive cart_info col-12 width-100 border-none">
+                        <tbody class="font-size-18px">
+                            <tr>
+                                <td>
+                                    <tr>
+                                        <td>Delivery Name: <b>{{ $order->name }}</b></td>
+                                        <td>Delivery Address: <b>{{ $order->address }}</b></td>
+                                    </tr>
+                                </td>
+                                <td>
+                                    <tr>
+                                        <td>Delivery City: <b>{{ $order->city }}</b></td>
+                                        <td>Order Date: <b>{{ $order->created_at }}</b></td>
+                                    </tr>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4 class="modal-title" id="modalLabel" style="margin-bottom: 10px;">Products</h4>
                     <div class="table-responsive cart_info col-12">
                         <table class="table table-condensed">
                             <thead>
