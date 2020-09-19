@@ -25,17 +25,17 @@ class CartController extends Controller
         if($row_in_cart == null) {
             if(Cart::create($add_to_cart)) {
                 $itemsInCart = \AppHelper::instance()->countItemsInCart();
-                return response()->json(['data' => ['message' => 'Product added to cart', 'itemsInCart' => $itemsInCart]], 200);
+                return response()->json(['data' => ['message' => '<i class="fas fa-check"></i> Product added to cart', 'itemsInCart' => $itemsInCart]], 200);
             } else {
-                return response()->json(['data' => ['message' => 'Error, Please try again']], 400);
+                return response()->json(['data' => ['message' => '<i class="fas fa-times"></i> Error, Please try again']], 400);
             }
         } else {
             $count_product = $row_in_cart->quantity + $add_to_cart['quantity'];
             if($row_in_cart->update(['quantity' => $count_product])) {
                 $itemsInCart = \AppHelper::instance()->countItemsInCart();
-                return response()->json(['data' => ['message' => 'Product added to cart', 'itemsInCart' => $itemsInCart]], 200);
+                return response()->json(['data' => ['message' => '<i class="fas fa-check"></i> Product added to cart', 'itemsInCart' => $itemsInCart]], 200);
             } else {
-                return response()->json(['data' => ['message' => 'Error, Please try again']], 400);
+                return response()->json(['data' => ['message' => '<i class="fas fa-times"></i> Error, Please try again']], 400);
             }
         }
     }

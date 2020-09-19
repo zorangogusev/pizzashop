@@ -172,9 +172,6 @@ $(function() {
 });
 
 $(function() {
-    $('#showOrderDetails').on('show.bs.modal', function (e) {
-            e.stopPropagation();
-    });
     $('.orders-page-view-order-details').on('click', function(e) {
         var order_id = $(this).attr('data-order-id');
         console.log('order_id is: ' + order_id);
