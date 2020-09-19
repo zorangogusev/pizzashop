@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @if (count($user_orders))
-            <h3 class="margin-top-100px">Your Orders</h3>
+            <h3>Your Orders</h3>
             <section id="cart_items" class="row">
                 <div class="table-responsive cart_info col-12">
                     <table class="table table-condensed">
