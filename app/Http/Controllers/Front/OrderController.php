@@ -43,7 +43,7 @@ class OrderController extends Controller
 
     public function userOrders(Request $request)
     {
-        $user_orders = Order::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(1);
+        $user_orders = Order::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
         $numberOfPages = ceil($user_orders->total() / $user_orders->perPage());
         $numberOfPagesDisplay = 6;
 
