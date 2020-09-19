@@ -40,8 +40,11 @@
             </section>
             <div class="orders-pagination-links text-right">
                 <a href="{{ $user_orders->previousPageUrl() }}"><i class="fas fa-angle-double-left"></i> Previous</a>
+                @php
+                    $numberOfPages = 4;
+                @endphp
                 @for($i = 1; $i <= ($user_orders->currentPage() + ($user_orders->total() - $user_orders->currentPage())); $i++)
-                    @if ((($user_orders->currentPage() - $i) < 4) && (((($user_orders->currentPage() + 4) - $i) > 0) && ((($user_orders->currentPage() + 4) - $i) < $user_orders->lastPage())))
+                    @if ((($user_orders->currentPage() - $i) < $numberOfPages) && (((($user_orders->currentPage() + $numberOfPages) - $i) > 0) && ((($user_orders->currentPage() + $numberOfPages) - $i) < $user_orders->lastPage())))
                         <a href="{{ $user_orders->url($i) }}" class="page-number-{{ $i }} @if ($i == $user_orders->currentPage()) active-pagination  @endif">{{ $i }}</a>
                     @endif
                 @endfor
