@@ -40,17 +40,14 @@
             </section>
             <div class="orders-pagination-links text-right">
                 <a href="{{ $user_orders->previousPageUrl() }}"><i class="fas fa-angle-double-left"></i> Previous</a>
-                @php
-                    $numberOfPages = 4;
-                @endphp
-                @for($i = 1; $i <= ($user_orders->currentPage() + ($user_orders->total() - $user_orders->currentPage())); $i++)
-                    @if ((($user_orders->currentPage() - $i) < $numberOfPages) && (((($user_orders->currentPage() + $numberOfPages) - $i) > 0) && ((($user_orders->currentPage() + $numberOfPages) - $i) < $user_orders->lastPage())))
+                @for($i = 1; $i <= $numberOfPages; $i++)
+                    @if((($user_orders->currentPage() - $i) < $numberOfPagesDisplay) && (($user_orders->currentPage() + $numberOfPagesDisplay) > $i) )
                         <a href="{{ $user_orders->url($i) }}" class="page-number-{{ $i }} @if ($i == $user_orders->currentPage()) active-pagination  @endif">{{ $i }}</a>
                     @endif
                 @endfor
                 <a href="{{ $user_orders->nextPageUrl() }}">Next <i class="fas fa-angle-double-right"></i></a>
             </div>
-@endif
+        @endif
     </div>
     <div class="padding-bottom-200px"></div>
 <div id="div-to-show-modal-with-order-products"></div>
