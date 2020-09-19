@@ -85,13 +85,13 @@
                                         <p>{{ $cart_data->product_code }} | {{ $cart_data->product_size }}</p>
                                     </td>
                                     <td class="cart_price">
-                                        <p>{!! $siteCurrency['sign'] !!} {{ $cart_data->price }}</p>
+                                        <p>{!! $siteCurrency['sign'] !!} {{ $cart_data->price * $siteCurrency['ratio']}}</p>
                                     </td>
                                     <td class="cart_quantity">
                                         <p>{{ $cart_data->quantity }}</p>
                                     </td>
                                     <td class="cart_total">
-                                        <p class="cart_total_price">{!! $siteCurrency['sign'] !!} {{ ($cart_data->price * $siteCurrency['ratio'])  * $cart_data->quantity }}</p>
+                                        <p class="cart_total_price">{!! $siteCurrency['sign'] !!} {{ ($cart_data->price * $siteCurrency['ratio']) * $cart_data->quantity }}</p>
                                     </td>
                                 </tr>
                             @endforeach
