@@ -50,7 +50,15 @@ class ProductsSeeder extends Seeder
             }
         }
 
-        $drinks = ['Coke' => 'Soft drink', 'Fanta' => 'Soft drink', 'Pepsi' => 'Soft drink'];
+        $drinks = [
+            'Coke' => 'Soft drink',
+            'Fanta' => 'Soft drink',
+            'Pepsi' => 'Soft drink',
+            'Sprite' => 'Soft drink',
+            'Strumka' => 'Soft drink',
+            'Sweps' => 'Soft drink',
+            'Sinalco' => 'Soft drink'
+        ];
 
         foreach ($drinks as $drink_key => $drink_value) {
             DB::table('products')->insert([
@@ -73,7 +81,15 @@ class ProductsSeeder extends Seeder
                 ]);
         }
 
-        $desert = ['Milka' => 'Chocolate with milk', 'Toblerone' => 'Dark chocolate'];
+        $desert = [
+            'Milka' => 'Chocolate with milk',
+            'Toblerone' => 'Dark chocolate',
+            'Cadburi' => 'Diary milk chocolate',
+            'Maya' => 'Fruit chocolate',
+            'Dark' => 'Dark chocolate',
+            'Sleep' => 'Chocolate supliment'
+        ];
+
         foreach ($desert as $desert_key => $desert_value) {
             DB::table('products')->insert([
                 'category_id' => 3,
@@ -89,7 +105,7 @@ class ProductsSeeder extends Seeder
             DB::table('product_attributes')->insert([
                 'product_id' => $product_id,
                 'size' => 'small',
-                'price' => 8,
+                'price' => 10,
                 'created_at' => NOW(),
                 'updated_at' => NOW()
             ]);
