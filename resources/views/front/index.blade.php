@@ -22,7 +22,7 @@
                                                     <div class="col-sm-6">
                                                         <select class="form-control index-page-product-size">
                                                             @foreach ($product->attributes as $attribute)
-                                                                <option value="{{ $attribute->price }}"
+                                                                <option value="{{ $attribute->price * $siteCurrency['ratio'] }}"
                                                                         data-product-size="{{ $attribute->size }}"
                                                                         data-product-id="{{ $product->id }}"
                                                                         data-product-name="{{ $product->name }}"
@@ -33,10 +33,10 @@
                                                         </select>
                                                     </div>
                                                     <div class="col-sm-6 test">
-                                                        <i class="fa fa-euro-sign"></i>
+                                                        {!! $siteCurrency['sign'] !!}
                                                         @php $count = 0 @endphp
                                                         @foreach ($product->attributes as $attribute)
-                                                            <span class="font-size-16px @if($count == 0) index-page-active-price @endif" data-price="{{ $attribute->price }}">{{ $attribute->price }}</span>
+                                                            <span class="font-size-16px @if($count == 0) index-page-active-price @endif" data-price="{{ $attribute->price * $siteCurrency['ratio'] }}">{{ $attribute->price * $siteCurrency['ratio'] }}</span>
                                                             @php $count++ @endphp
                                                         @endforeach
                                                     </div>

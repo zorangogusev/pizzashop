@@ -19,14 +19,14 @@
                     @foreach($cart_datas as $cart_data)
                         <tr>
                             <td class="cart_product">
-                                <div class="div-card-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $cart_data->product->image }}');"></div></a>
+                                <div class="div-card-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $cart_data->image }}');"></div></a>
                             </td>
                             <td class="cart_description">
                                 <h4><a href="">{{ $cart_data->product_name }}</a></h4>
                                 <p>{{ $cart_data->product_code }} | {{ $cart_data->product_size }}</p>
                             </td>
                             <td class="cart_price">
-                                <p><i class="fa fa-euro-sign"></i> {{ $cart_data->product_price }}</p>
+                                <p>{!! $siteCurrency['sign'] !!} {{ $cart_data->price * $siteCurrency['ratio'] }}</p>
                             </td>
                             <td class="cart_quantity">
                                 <div class="cart_quantity_button">
@@ -36,7 +36,7 @@
                                 </div>
                             </td>
                             <td class="cart_total">
-                                <p class="cart_total_price"><i class="fa fa-euro-sign"></i> {{ $cart_data->product_price * $cart_data->quantity }}</p>
+                                <p class="cart_total_price">{!! $siteCurrency['sign'] !!} {{ ($cart_data->price * $siteCurrency['ratio']) * $cart_data->quantity }}</p>
                             </td>
                             <td class="cart_delete">
                                 <a class="cart_quantity_delete cursor-pointer" data-cart-id="{{ $cart_data->id }}"><i class="fa fa-times"></i></a>
@@ -56,7 +56,7 @@
                 <div class="col-sm-6">
                     <div class="total_area">
                         <ul>
-                            <li>Total <span><i class="fa fa-euro-sign"></i> {{ $total_price }}</span></li>
+                            <li>Total <span>{!! $siteCurrency['sign'] !!} {{ $total_price * $siteCurrency['ratio'] }}</span></li>
                         </ul>
                         <div class="margin-left-20px">
                             <a class="color-fff" href="{{ url('/check-out') }}">

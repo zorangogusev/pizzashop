@@ -20,6 +20,7 @@ class OrderController extends Controller
             $request = $request->all();
             $input_order_data = $request['delivery_data'];
             $input_order_data['order_total'] = $request['order_total'];
+            $input_order_data['currency'] = $request['currency'];
             $input_order_data['order_status'] = 1;
             $input_order_data['user_id'] = Auth::user()->id;
             $input_order_data['user_email'] = Auth::user()->email;

@@ -11,6 +11,7 @@
                         <tr class="cart_menu">
                             <td class="image" align="center">Order ID</td>
                             <td class="description" align="center">Order total</td>
+                            <td class="description" align="center">Currency</td>
                             <td class="price" align="center">Date</td>
                             <td class="price" align="center">Details</td>
                         </tr>
@@ -22,7 +23,14 @@
                                     <p class="">{{ $order->id }}</p>
                                 </td>
                                 <td align="center">
-                                    <p class="">{{ $order->order_total }}</p>
+                                    <p>{{ $order->order_total }}</p>
+                                </td>
+                                <td align="center">
+                                    @if($order->currency == 'EURO')
+                                        <i class="fas fa-euro-sign main-color">
+                                    @else
+                                        <i class="fas fa-dollar-sign main-color">
+                                    @endif
                                 </td>
                                 <td align="center">
                                     <p class="">{{ $order->created_at }}</p>

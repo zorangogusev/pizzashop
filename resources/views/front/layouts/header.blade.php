@@ -70,23 +70,24 @@
                     </div>
                 </div>
                 <div class="col-sm-3">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                            DOLLAR
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Canadian Dollar</a></li>
-                            <li><a href="#">Pound</a></li>
-                        </ul>
-                    </div>
-
                     @if (isset($indexPage))
-                        <div class="search_box pull-right">
+                        <div class="search_box pull-left">
                             <input id="search" class="form-control" type="text" placeholder="Search by Name"/>
                             <span id="no-product-with-that-name" class="color-red display-none"><i>Product unavailable</i></span>
                         </div>
                     @endif
+
+                    <div class="btn-group pull-right">
+                        <button id="set-currency-button" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            {{ $siteCurrency['name'] }}
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a id="set-currency-button-euro" href="#" data-currency-name="EURO" data-currency-sign="<i class='fa fa-euro-sign main-color'></i>" data-currency-ratio="1">EURO</a></li>
+                            <li><a id="set-currency-button-dollar" href="#" data-currency-name="DOLLAR" data-currency-sign="<i class='fas fa-dollar-sign main-color'></i>" data-currency-ratio="1.2">DOLLAR</a></li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>

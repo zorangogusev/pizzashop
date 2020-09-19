@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\v1\CartController;
 use App\Http\Controllers\Api\v1\OrderController;
+use App\Http\Controllers\Api\v1\CurrencyController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,6 +19,7 @@ use App\Http\Controllers\Api\v1\OrderController;
 Route::get('/addToCard', [CartController::class, 'addToCard']);
 Route::get('/actionFromCartPage', [CartController::class, 'actionFromCartPage']);
 Route::get('/getOrderDetails', [OrderController::class, 'getOrderDetails']);
+Route::get('/changeCurrency', [CurrencyController::class, 'changeCurrency']);
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();

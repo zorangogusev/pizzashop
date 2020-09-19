@@ -17,6 +17,13 @@
                                     <tr>
                                         <td>Delivery Name: <b>{{ $order->name }}</b></td>
                                         <td>Delivery Address: <b>{{ $order->address }}</b></td>
+                                        <td>Currency:
+                                            @if($order->currency == 'EURO')
+                                                EURO
+                                            @else
+                                                DOLLAR
+                                            @endif
+                                        </td>
                                     </tr>
                                 </td>
                                 <td>

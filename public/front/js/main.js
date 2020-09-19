@@ -46,7 +46,6 @@ $(function () {
         var selected_product_size = div_with_data.find(":selected").attr('data-product-size');
         var selected_product_name = div_with_data.find(":selected").attr('data-product-name');
         var selected_product_code = div_with_data.find(":selected").attr('data-product-code');
-        var selected_product_price = div_with_data.find(":selected").val();
         var selected_product_quantity = 1;
 
         $.ajax({
@@ -58,7 +57,6 @@ $(function () {
                 product_size: selected_product_size,
                 product_name: selected_product_name,
                 product_code: selected_product_code,
-                product_price: selected_product_price,
                 quantity: selected_product_quantity
             },
             beforeSend: function() {},
@@ -119,7 +117,7 @@ $(function() {
             },
             beforeSend: function() {},
             success: function() {
-                location.reload(false);
+                window.location.reload(false);
             },
             error: function() {}
         });
@@ -193,4 +191,29 @@ $(function() {
             }
         });
     });
+});
+
+$(function() {
+   $('#set-currency-button-euro, #set-currency-button-dollar').on('click', function() {
+       var new_currency_name = $(this).attr('data-currency-name');
+       var new_currency_sign = $(this).attr('data-currency-sign');
+       var new_currency_ratio = $(this).attr('data-currency-ratio');
+
+       $.ajax({
+           type: "GET",
+           dataType: "JSON",
+           url: API_URL + 'changeCurrency',
+           data: {
+               name: new_currency_name,
+               sign: new_currency_sign,
+               ratio: new_currency_ratio
+           },
+           beforeSend: function() {},
+           success: function(response) {
+               window.location.reload(false);
+           },
+           error: function(response) {
+           }
+       });
+   });
 });

@@ -229,6 +229,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'AppHelper' => App\Libraries\AppHelper::class,
+        'CartHelper' => App\Libraries\CartHelper::class,
 
     ],
 

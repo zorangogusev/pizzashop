@@ -63,13 +63,14 @@ class UserController extends Controller
     {
         $session_id = Session::get('session_id');
         if (empty($session_id)) return redirect('/');
-        $cart_datas = Cart::with('product')->where('session_id',$session_id)->get();
-        $total_price = 0;
-        foreach ($cart_datas as $cart_data){
-            $total_price += $cart_data->product_price * $cart_data->quantity;
-        }
+
+        $cart_datas = \CartHelper::instance()->getCartDatas();
         $shipping = 5;
 
-        return view('front.users.check-out', compact('cart_datas', 'total_price', 'shipping'));
+        return view('front.users.check-out', [
+                'cart_datas' => $cart_datas['cart_datas'],
+                'total_price' => $cart_datas['total_price'],
+                'shipping' => 5
+            ]);
     }
 }

@@ -26,6 +26,7 @@ class OrdersSeeder extends Seeder
                     'city' => $user->name . ' city',
                     'mobile' => '1234567',
                     'order_total' => 15,
+                    'currency' => 'EURO',
                     'order_status' => 1,
                     'created_at' => NOW(),
                     'updated_at' => NOW()

@@ -47,11 +47,13 @@
                             <input type="hidden" name="products[{{ $cart_data->product_id }}][product_id]" value="{{ $cart_data->product_id }}">
                             <input type="hidden" name="products[{{ $cart_data->product_id }}][product_name]" value="{{ $cart_data->product_name }}">
                             <input type="hidden" name="products[{{ $cart_data->product_id }}][product_size]" value="{{ $cart_data->product_size }}">
-                            <input type="hidden" name="products[{{ $cart_data->product_id }}][product_price]" value="{{ $cart_data->product_price }}">
+                            <input type="hidden" name="products[{{ $cart_data->product_id }}][product_price]" value="{{ $cart_data->price }}">
                             <input type="hidden" name="products[{{ $cart_data->product_id }}][product_quantity]" value="{{ $cart_data->quantity }}">
-                            <input type="hidden" name="products[{{ $cart_data->product_id }}][product_total]" value="{{ $cart_data->product_price * $cart_data->quantity }}">
+                            <input type="hidden" name="products[{{ $cart_data->product_id }}][product_total]" value="{{ ($cart_data->price * $siteCurrency['ratio']) * $cart_data->quantity }}">
+
                         @endforeach
-                        <input type="hidden" name="order_total" value="{{ $total_price }}">
+                        <input type="hidden" name="order_total" value="{{ $total_price * $siteCurrency['ratio'] }}">
+                        <input type="hidden" name="currency" value="{{ $siteCurrency['name'] }}">
                     </div><!--/sign up form-->
                 </div>
 
@@ -75,7 +77,7 @@
                                 <tr>
                                     <td class="cart_product">
                                         <td class="cart_product">
-                                            <div class="div-card-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $cart_data->product->image }}');"></div></a>
+                                            <div class="div-card-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $cart_data->image }}');"></div></a>
                                         </td>
                                     </td>
                                     <td class="cart_description">
@@ -83,13 +85,13 @@
                                         <p>{{ $cart_data->product_code }} | {{ $cart_data->product_size }}</p>
                                     </td>
                                     <td class="cart_price">
-                                        <p><i class="fa fa-euro-sign"></i> {{ $cart_data->product_price }}</p>
+                                        <p>{!! $siteCurrency['sign'] !!} {{ $cart_data->price }}</p>
                                     </td>
                                     <td class="cart_quantity">
                                         <p>{{ $cart_data->quantity }}</p>
                                     </td>
                                     <td class="cart_total">
-                                        <p class="cart_total_price"><i class="fa fa-euro-sign"></i> {{ $cart_data->product_price * $cart_data->quantity }}</p>
+                                        <p class="cart_total_price">{!! $siteCurrency['sign'] !!} {{ ($cart_data->price * $siteCurrency['ratio'])  * $cart_data->quantity }}</p>
                                     </td>
                                 </tr>
                             @endforeach
@@ -99,15 +101,15 @@
                                     <table class="table table-condensed total-result">
                                         <tr>
                                             <td>Cart Sub Total</td>
-                                            <td><span><i class="fa fa-euro-sign"></i> {{ $total_price }}</span></td>
+                                            <td><span>{!! $siteCurrency['sign'] !!} {{ $total_price  * $siteCurrency['ratio']}}</span></td>
                                         </tr>
                                         <tr>
                                             <td>Shipping</td>
-                                            <td><span><i class="fa fa-euro-sign"></i> {{ $shipping }}</span></td>
+                                            <td><span>{!! $siteCurrency['sign'] !!} {{ $shipping  * $siteCurrency['ratio'] }}</span></td>
                                         </tr>
                                         <tr>
                                             <td>Total</td>
-                                            <td><span><i class="fa fa-euro-sign"></i> {{ $total_price + $shipping }}</span></td>
+                                            <td><span>{!! $siteCurrency['sign'] !!} {{ ($total_price  * $siteCurrency['ratio']) + $shipping }}</span></td>
                                         </tr>
                                     </table>
                                 </td>

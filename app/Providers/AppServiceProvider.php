@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Session;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,8 +16,9 @@ class AppServiceProvider extends ServiceProvider
     {
         view()->composer('*',function($view){
 
-            $itemsInCart = \AppHelper::instance()->countItemsInCart();
-            $view->with('itemsInCart', $itemsInCart );
+            $siteCurrency = \AppHelper::instance()->getSiteCurrency();
+            $itemsInCart = \CartHelper::instance()->countItemsInCart();
+            $view->with('itemsInCart', $itemsInCart )->with('siteCurrency', $siteCurrency);
 
         });
     }

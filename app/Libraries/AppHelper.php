@@ -34,4 +34,16 @@ class AppHelper
 
         return $itemsInCart;
     }
+
+    public function getSiteCurrency()
+    {
+        $site_currency = Session::get('site_currency');
+        if(!$site_currency) {
+            $site_currency['name'] = 'EURO';
+            $site_currency['sign'] = '<i class="fa fa-euro-sign main-color"></i>';
+            $site_currency['ratio'] = 1;
+        }
+
+        return $site_currency;
+    }
 }
