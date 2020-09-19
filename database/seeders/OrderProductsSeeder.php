@@ -17,7 +17,7 @@ class OrderProductsSeeder extends Seeder
         $orders = DB::table('orders')->get();
 
         foreach($orders as $order) {
-            for($i = 0; $i < 3; $i++) {
+            for($i = 1; $i < 4; $i++) {
                 DB::table('order_products')->insert([
                     'order_id' => $order->id,
                     'product_id' => $i,
