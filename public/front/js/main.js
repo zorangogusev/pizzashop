@@ -1,6 +1,6 @@
 
 const API_URL = location.protocol + "//" + window.location.hostname  + "/api/v1/";
-
+const API_TOKEN = '1a06bac3-3d64-4861-9cca-9f998e7877d1'; // API Key from HEROKU
 
 /*scroll to top*/
 $(document).ready(function(){
@@ -48,11 +48,14 @@ $(function () {
         var selected_product_code = div_with_data.find(":selected").attr('data-product-code');
         var selected_product_quantity = 1;
 
+
+
         $.ajax({
             type: "GET",
             dataType: "JSON",
             url: API_URL + 'addToCard',
             data: {
+                api_token: API_TOKEN,
                 product_id: selected_product_id,
                 product_size: selected_product_size,
                 product_name: selected_product_name,
