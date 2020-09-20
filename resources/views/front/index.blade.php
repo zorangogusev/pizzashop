@@ -14,7 +14,9 @@
                                     <div id="{{ strtolower($product->name) }}" class="product-image-wrapper">
                                         <div class="single-products">
                                             <div class="productinfo text-center">
-                                                <a href="javascript:void(0)"><div class="div-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $product->image }}');"></div></a>
+{{--                                                for showing pictures when deployed on heroku the function for loading picture after loading the page is commented  --}}
+{{--                                                <a href="javascript:void(0)"><div class="div-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $product->image }}');"></div></a>--}}
+                                                <a href="javascript:void(0)"><div class="div-image" style="background-image:url('images/products/{{ $product->image }}');"></div></a>
                                                 <p>{{ $product->name }}</p>
                                                 <p>{{ $product->description }}</p>
 
