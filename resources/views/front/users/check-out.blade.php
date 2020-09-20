@@ -77,7 +77,8 @@
                                 <tr>
                                     <td class="cart_product">
                                         <td class="cart_product">
-                                            <div class="div-card-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $cart_data->image }}');"></div></a>
+{{--                                            <div class="div-card-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $cart_data->image }}');"></div></a>--}}
+                                            <div class="div-card-image" style="background-image:url('/public/images/products/{{ $cart_data->image }}');"></div></a>
                                         </td>
                                     </td>
                                     <td class="cart_description">

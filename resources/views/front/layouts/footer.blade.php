@@ -55,7 +55,8 @@
                 </div>
                 <div class="col-sm-3 col-sm-offset-1">
                     <div class="single-widget">
-                        <div class="div-pizza-shop-image" style="background-image:url('/getFrontImage?path=/public/images/pizza-shop/&image=pizza-shop.jpeg');"></div>
+{{--                        <div class="div-pizza-shop-image" style="background-image:url('/getFrontImage?path=/public/images/pizza-shop/&image=pizza-shop.jpeg');"></div>--}}
+                        <div class="div-pizza-shop-image" style="background-image:url('/images/pizza-shop/pizza-shop.jpeg');"></div>
                     </div>
                 </div>
 

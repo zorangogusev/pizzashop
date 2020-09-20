@@ -44,5 +44,10 @@
 	- run the database seeders
 	  	php aritsan db:seed
 	  	
-	  	
+	- in /public/front/js/main.js file the api route is setup for nginx server
+	  depending on server set up the app route  line 2 for apache, line 5 for nginx
+	
+	- the loading of the picture after loading of the page is commented out because in heroku they were not loading,
+	  if possible uncomment them and comment the code for picture for heroku loading
+	  
 	  	

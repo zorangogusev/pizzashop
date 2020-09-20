@@ -53,7 +53,8 @@
                             @foreach($order->products as $product)
                                 <tr>
                                     <td align="center">
-                                        <div class="div-image-modal-show-order-products" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $product->product->image }}');"></div>
+{{--                                        <div class="div-image-modal-show-order-products" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $product->product->image }}');"></div>--}}
+                                        <div class="div-image-modal-show-order-products" style="background-image:url('/public/images/products/{{ $product->product->image }}');"></div>
                                     </td>
                                     <td align="center">
                                         <p class="">{{ $product->product_name }}</p>

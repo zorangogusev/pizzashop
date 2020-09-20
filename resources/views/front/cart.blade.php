@@ -19,7 +19,8 @@
                     @foreach($cart_datas as $cart_data)
                         <tr>
                             <td class="cart_product">
-                                <div class="div-card-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $cart_data->image }}');"></div></a>
+{{--                                <div class="div-card-image" style="background-image:url('/getFrontImage?path=/public/images/products/&image={{ $cart_data->image }}');"></div></a>--}}
+                                <div class="div-card-image" style="background-image:url('/images/products/{{ $cart_data->image }}');"></div></a>
                             </td>
                             <td class="cart_description">
                                 <h4><a href="">{{ $cart_data->product_name }}</a></h4>
