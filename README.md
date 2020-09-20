@@ -7,7 +7,8 @@
     Libraries:
     Font Awesome Free 5.13.1
 	
-	
+	Application live demo on
+    app-pizzashop.herokuapp.com/index.php/
 	
     ========================== 2.  Deployment description ==========================
 		
