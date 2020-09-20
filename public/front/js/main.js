@@ -1,8 +1,8 @@
 
-// const API_URL = location.protocol + "//" + window.location.hostname  + "/api/v1/";
+const API_URL = location.protocol + "//" + window.location.hostname  + "/api/v1/";
 
 
-const API_URL = 'https://connect-dublin.heroku.com/api/v3/'; // API URL from HEROKU
+// const API_URL = 'https://connect-dublin.heroku.com/api/v3/'; // API URL from HEROKU
 const API_TOKEN = '1a06bac3-3d64-4861-9cca-9f998e7877d1'; // API Key from HEROKU
 
 /*scroll to top*/
