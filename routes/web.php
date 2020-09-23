@@ -27,17 +27,19 @@ Route::get('/viewcart', [CartController::class, 'index']);
 
 /* User */
 Route::get('/login-page', [UserController::class, 'index']);
-Route::post('/user-register', [UserController::class, 'register']);
-Route::post('/user-login', [UserController::class, 'login']);
+Route::get('/check-out', [UserController::class, 'checkOut']);
+Route::post('/user-register', [UserController::class, 'registerFront'])->name('registerFront');
+Route::post('/user-login', [UserController::class, 'loginFront'])->name('loginFront');
+
+Route::post('/order-now', [OrderController::class, 'orderNow']);
 
 Route::middleware([FrontLogin::class])->group(function () {
-    Route::get('/check-out', [UserController::class, 'checkOut']);
     Route::get('/logout', [UserController::class, 'logout']);
 
     Route::get('/user-orders', [OrderController::class, 'userOrders']);
-    Route::post('/order-now', [OrderController::class, 'orderNow']);
-});
 
+});
+//Auth::routes(['login' => false]);
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');

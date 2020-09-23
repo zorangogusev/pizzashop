@@ -15,7 +15,7 @@ class OrderController extends Controller
         $order_id = $request->get('order_id');
         $order = Order::with('products', 'products.product')->where(['id' => $order_id])->first();
 
-        if(Auth::user()->id == $order->user_id) {
+        if(Auth::user()->email == $order->user_email) {
             $modal_for_product = \View::make('front.partials._modal-show-order-products')->with(['order' => $order])->render();
 
             return response()->json(['data' => ['message' => 'Success', 'modal_for_product' => $modal_for_product]], 200);

@@ -16,10 +16,12 @@ class UserController extends Controller
 
     public function index()
     {
+        if(Auth::check()) return redirect('/');
+
         return view('front.users.login-page');
     }
 
-    public function register(Request $request)
+    public function registerFront(Request $request)
     {
         $this->validate($request,[
             'name' => 'required|string|max:255',
@@ -38,7 +40,7 @@ class UserController extends Controller
         return redirect('/');
     }
 
-    public function login(Request $request)
+    public function loginFront(Request $request)
     {
         $input_data = $request->all();
         $remember = (isset($input_data['remember_me'])) ? ($input_data['remember_me']) : '';

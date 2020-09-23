@@ -21,9 +21,19 @@
                             <div class="col-md-5" >
                                 <div class="form-group">
                                     <label class="red-asterix" for="name">Name: </label>
-                                    <input type="text" class="form-control" name="delivery_data[name]" id="name" value="{{ Auth::user()->name }}" placeholder="Delivery Name" required>
+                                    <input type="text" class="form-control" name="delivery_data[name]" id="name" value="{{ isset(Auth::user()->name) ? Auth::user()->name : '' }}" placeholder="Delivery Name" required>
                                 </div>
-
+                                @if(Auth::user())
+                                    <div class="form-group">
+                                        <label class="red-asterix" for="name">Email: </label>
+                                        <input type="text" class="form-control" name="delivery_data[user_email]" id="email" value="{{ isset(Auth::user()->email) ? Auth::user()->email : '' }}" placeholder="Email" required>
+                                    </div>
+                                @else
+                                    <div class="form-group">
+                                        <label class="red-asterix" for="name">Email: </label>
+                                        <input type="text" class="form-control" name="delivery_data[user_email]" id="email" placeholder="Email" required>
+                                    </div>
+                                @endif()
 
                                 <div class="form-group">
                                     <label class="red-asterix" for="address">Address: </label>

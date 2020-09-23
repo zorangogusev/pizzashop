@@ -11,7 +11,7 @@
             <div class="col-sm-4 col-sm-offset-1">
                 <div class="login-form"><!--login form-->
                     <h2>Login to your account</h2>
-                    <form action="{{ url('/user-login') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('loginFront') }}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <input type="email" placeholder="Email" name="email"/>
                         <input type="password" placeholder="Password" name="password"/>
@@ -29,7 +29,7 @@
             <div class="col-sm-4">
                 <div class="signup-form"><!--sign up form-->
                     <h2>New User Signup!</h2>
-                    <form action="{{ url('/user-register') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('registerFront') }}" method="post" class="form-horizontal">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                         <input type="text" placeholder="Name" name="name" value="{{ old('name') }}"/>

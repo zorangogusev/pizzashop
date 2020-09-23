@@ -22,8 +22,7 @@ class OrderController extends Controller
             $input_order_data['order_total'] = $request['order_total'];
             $input_order_data['currency'] = $request['currency'];
             $input_order_data['order_status'] = 1;
-            $input_order_data['user_id'] = Auth::user()->id;
-            $input_order_data['user_email'] = Auth::user()->email;
+            $input_order_data['user_id'] = isset(Auth::user()->id) ? Auth::user()->id : 0;
             $input_order_products_data = $request['products'];
 
             Order::create($input_order_data);
@@ -44,7 +43,7 @@ class OrderController extends Controller
 
     public function userOrders(Request $request)
     {
-        $user_orders = Order::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(10);
+        $user_orders = Order::where('user_email', Auth::user()->email)->orderBy('created_at', 'desc')->paginate(10);
         $numberOfPages = ceil($user_orders->total() / $user_orders->perPage());
         $numberOfPagesDisplay = 6;
 
