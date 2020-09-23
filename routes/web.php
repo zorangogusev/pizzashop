@@ -39,7 +39,6 @@ Route::middleware([FrontLogin::class])->group(function () {
     Route::get('/user-orders', [OrderController::class, 'userOrders']);
 
 });
-//Auth::routes(['login' => false]);
 
 //Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //    return view('dashboard');
