@@ -15,6 +15,9 @@
 	- clone the repozitory:
 		sudo git clone https://github.com/zorangogusev/pizzashop.git pizzashop
 
+    - run docker
+        sudo docker-compose up -d --build
+
 	- install composer:	
 	  	sudo composer install
 	
@@ -30,24 +33,24 @@
 	- create app key
 	  	php artisan key:generate
 
-	- create in mysql database pizzashop
-	- in .env file update 
-	  DB_USERNAME=your_user_name
-	  DB_PASSWORD=your_password
 
-	-pizzashop/config/database.php file it is setup for heroky, need to setup myslq data  
-		- comment the data for heroku from line 67 to line 86
-		- uncomment the data from line 46 to line 66
+	- in .env file add 
+        DB_CONNECTION=mysql
+        DB_HOST=pizzashop-mariadb-10.2
+        DB_PORT=3306
+        DB_DATABASE=pizzashop
+        DB_USERNAME=zoran
+        DB_PASSWORD=zoran
 
-	- run the migrations
-	  	php artisan migrate
+    - enter in docker container
+        sudo docker exec -it pizzashop-web /bin/bash
+        cd /var/www/html
+        - run the migrations
+            php artisan migrate
+    
+        - run the database seeders
+            php aritsan db:seed
 
-	- run the database seeders
-	  	php aritsan db:seed
-	  	
-	- in /public/front/js/main.js file the api route is setup for nginx server
-	  depending on server set up the app route  line 2 for apache, line 5 for nginx
-	
 	- the loading of the picture after loading of the page is commented out because in heroku they were not loading,
 	  if possible uncomment them and comment the code for picture for heroku loading
 	  

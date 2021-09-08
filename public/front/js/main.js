@@ -1,8 +1,4 @@
-// apache
-//const API_URL = location.protocol + "//" + window.location.hostname  + "/api/v1/";
-
-// nginx
-const API_URL = location.protocol + "//" + window.location.hostname  + "/index.php/api/v1/";
+const API_URL = location.protocol + "//" + window.location.hostname  + "/api/v1/";
 
 /*scroll to top*/
 $(document).ready(function(){

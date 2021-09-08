@@ -1,0 +1,39 @@
+version: "3.2"
+services:
+    pizzashop-web:
+        build:
+            context: ./
+            dockerfile: .docker/dev/Dockerfile
+        container_name: pizzashop-web
+        networks:
+          ecommerce_net:
+            ipv4_address: 172.172.207.100
+        volumes:
+            - ./:/var/www/html/
+        links:
+            - pizzashop-mariadb-10.2
+        tty: true
+
+
+    pizzashop-mariadb-10.2:
+        image: mariadb:10.2
+        container_name: pizzashop-mariadb-10.2
+        networks:
+          ecommerce_net:
+            ipv4_address: 172.172.207.101
+        volumes:
+            - ./.docker/db_data:/var/lib/mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=zoran
+            - MYSQL_DATABASE=pizzashop
+            - MYSQL_USER=zoran
+            - MYSQL_PASSWORD=zoran
+            - MYSQL_ROOT_HOST=0.0.0.0
+
+networks:
+  ecommerce_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.172.207.0/24
