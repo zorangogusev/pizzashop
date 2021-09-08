@@ -1,6 +1,6 @@
-    ========================== 1.  Used tehnologies ==========================
+    ========================== 1.  Used technologies ==========================
 	
-	HTML5, CSS3, PHP7.3, MYSQL, Laravel8.1, jQuery v3.5.1, Composer
+	HTML5, CSS3, PHP8.0, MYSQL, Laravel8.1, jQuery v3.5.1, Composer Docker
     
     for front/guest part is used template e-shoper (plugins animate.css, jquery.scrollUp, Bootstrap v3.0.3)
     
