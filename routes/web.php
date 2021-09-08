@@ -21,6 +21,7 @@ use App\Http\Controllers\Front\OrderController;
 
 /* Front Location */
 Route::get('/', [IndexController::class, 'index']);
+Route::get('/about', [IndexController::class, 'about']);
 Route::get('/contact', [IndexController::class, 'contact']);
 Route::get('/getFrontImage', [IndexController::class, 'getFrontImage']);
 Route::get('/viewcart', [CartController::class, 'index']);

@@ -57,7 +57,8 @@
                     </div>
                     <div class="mainmenu pull-left">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                            <li><a href="{{url('/')}}" class="active">Home</a></li>
+                            <li><a href="{{ url('/') }}" class="@if(Request::is('/')) active @endif">Home</a></li>
+                            <li><a href="{{ url('/about') }}" class="@if(Request::is('about')) active @endif">About</a></li>
                             <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="{{ url('/') }}">Products</a></li>
@@ -65,7 +66,7 @@
                                     <li class="nav-bar-check-out-button @if ($itemsInCart == 0) display-none @endif"><a href="{{ url('/check-out') }}">Check Out</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{ url('/contact') }}">Contact</a></li>
+                            <li><a href="{{ url('/contact') }}" class="@if(Request::is('contact')) active @endif">Contact</a></li>
                         </ul>
                     </div>
                 </div>

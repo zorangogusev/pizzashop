@@ -16,6 +16,11 @@ class IndexController extends Controller
         return view('front.index', compact('products', 'indexPage'));
     }
 
+    public function about()
+    {
+        return view('front.about');
+    }
+
     public function contact()
     {
         return view('front.contact');
